@@ -8,7 +8,7 @@ export default function Header() {
       <Link to="/">
         <FaHome size={30} />
       </Link>
-      <Link to="/login">
+      <Link to="/motherboard">
         <FaLaptop size={30} />
       </Link>
       <Link to="/teste">
