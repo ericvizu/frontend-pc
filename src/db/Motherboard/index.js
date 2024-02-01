@@ -33,6 +33,7 @@ export default function Motherboard() {
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Brand</th>
             <th scope="col">Name</th>
             <th scope="col">Socket</th>
             <th scope="col">RAM</th>
@@ -41,6 +42,7 @@ export default function Motherboard() {
             <th scope="col">SATA Slots</th>
             <th scope="col">M.2 Gen4 Slots</th>
             <th scope="col">M.2 Gen3 Slots</th>
+            <th scope="col">Stock</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -51,6 +53,7 @@ export default function Motherboard() {
               <th scope="row" key={index}>
                 {index + 1}
               </th>
+              <td>{motherboard.brand}</td>
               <td>{motherboard.name}</td>
               <td>{motherboard.socket}</td>
               <td>{motherboard.ramGen}</td>
@@ -59,6 +62,7 @@ export default function Motherboard() {
               <td>{motherboard.sataSlots}</td>
               <td>{motherboard.m2Gen4Slots}</td>
               <td>{motherboard.m2Gen3Slots}</td>
+              <td>{motherboard.stock.quantity}</td>
               <td>
                 <Link to={`/editmotherboard/${motherboard.id}`}>
                   <button type="button" className="editButton">
