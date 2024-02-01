@@ -1,48 +1,82 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Title, Paragrafo } from './styled';
-import { Container } from '../../styles/GlobalStyles';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Title } from './styled';
+import { Container, Table } from '../../styles/GlobalStyles';
 
 export default function Motherboard() {
-  const navigate = useNavigate();
+  const [motherboards, setMotherboards] = useState([]);
 
-  const [motherboard, setMotherboards] = useState({
-    name: '',
-    socket: '',
-    ramGen: '',
-    ramSlots: '',
-    ramFreq: '',
-    sataSlots: '',
-    m2Gen4Slots: '',
-    m2Gen3Slots: '',
-  });
-
-  const {
-    name,
-    socket,
-    ramGen,
-    ramSlots,
-    ramFreq,
-    sataSlots,
-    m2Gen4Slots,
-    m2Gen3Slots,
-  } = motherboard;
-
-  const onInputChange = (e) => {
-    setMotherboards({ ...motherboard, [e.target.name]: e.target.value });
+  const loadMotherboards = async () => {
+    const result = await axios.get('http://localhost:8080/motherboard');
+    setMotherboards(result.data);
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.post('http://localhost:8080/motherboard', motherboard);
-    navigate('/');
+  const deleteMotherboard = async (id) => {
+    await axios.delete(`http://localhost:8080/motherboard/${id}`);
+    loadMotherboards();
   };
+
+  useEffect(() => {
+    loadMotherboards();
+  }, []);
 
   return (
     <Container>
-      <Title>Motherboard</Title>
-      <Paragrafo> Cadastro de novas motherboard </Paragrafo>
+      <Title>
+        Motherboard
+        <button type="button" onClick={loadMotherboards}>
+          Recarregar
+        </button>
+      </Title>
+      <Table className="">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Socket</th>
+            <th scope="col">RAM</th>
+            <th scope="col">RAM Slots</th>
+            <th scope="col">RAM Frequency</th>
+            <th scope="col">SATA Slots</th>
+            <th scope="col">M.2 Gen4 Slots</th>
+            <th scope="col">M.2 Gen3 Slots</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {motherboards.map((motherboard, index) => (
+            <tr>
+              {/* eslint-disable-next-line react/no-array-index-key */}
+              <th scope="row" key={index}>
+                {index + 1}
+              </th>
+              <td>{motherboard.name}</td>
+              <td>{motherboard.socket}</td>
+              <td>{motherboard.ramGen}</td>
+              <td>{motherboard.ramSlots}</td>
+              <td>{motherboard.ramFreq}</td>
+              <td>{motherboard.sataSlots}</td>
+              <td>{motherboard.m2Gen4Slots}</td>
+              <td>{motherboard.m2Gen3Slots}</td>
+              <td>
+                <Link to={`/editmotherboard/${motherboard.id}`}>
+                  <button type="button" className="editButton">
+                    Edit
+                  </button>
+                </Link>
+                <button
+                  type="button"
+                  className="deleteButton"
+                  onClick={() => deleteMotherboard(motherboard.id)}
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </Container>
   );
 }

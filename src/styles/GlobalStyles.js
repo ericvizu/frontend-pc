@@ -1,5 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { primaryColor, primaryDarkColor } from '../config/colors';
+import {
+  primaryColor,
+  primaryDarkColor,
+  editButtonColor,
+  deleteButtonColor,
+} from '../config/colors';
 
 export default createGlobalStyle`
   * {
@@ -27,6 +32,20 @@ export default createGlobalStyle`
     padding: 10px 20px;
     border-radius: 4px;
     font-weight: 700;
+    margin-left: 10px;
+    vertical-align: 80%;
+  }
+
+  button.editButton {
+    background: white;
+    border: 2px solid ${editButtonColor};
+    color: ${editButtonColor};
+  }
+
+  button.deleteButton {
+    background: ${deleteButtonColor};
+    border: 2px solid ${deleteButtonColor};
+    color: white;
   }
 
   a {
@@ -41,10 +60,16 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  max-width: 1080px;
+  max-width: 80%;
   background: #fff;
   margin: 30px auto;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`;
+
+export const Table = styled.table`
+  text-align: center;
+  vertical-align: center;
+  width: 100%;
 `;
