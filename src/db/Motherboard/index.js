@@ -22,12 +22,12 @@ export default function Motherboard() {
 
   return (
     <Container>
-      <title>
+      <h1>
         Motherboard
         <Buttons.Reload type="button" onClick={loadMotherboards}>
           Recarregar
         </Buttons.Reload>
-      </title>
+      </h1>
       <Table className="">
         <thead>
           <tr>

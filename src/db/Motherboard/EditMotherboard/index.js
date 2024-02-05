@@ -53,7 +53,7 @@ export default function EditMotherboard() {
 
   return (
     <Container>
-      <title> Edit Motherboard </title>
+      <h1> Edit Motherboard </h1>
 
       <form onSubmit={(e) => onSubmit(e)}>
         <div>

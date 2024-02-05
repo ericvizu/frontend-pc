@@ -14,9 +14,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  title {
+  h1 {
     font-size: 50px;
 }
+
 
   body {
     font-family: sans-serif;
