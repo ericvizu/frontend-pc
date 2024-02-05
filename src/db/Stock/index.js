@@ -20,7 +20,7 @@ export default function Stock() {
     <Container>
       <Title>
         Stock
-        <button type="button" onClick={loadStocks}>
+        <button type="button" onClick={loadStocks} className="btn btn-danger">
           Recarregar
         </button>
       </Title>

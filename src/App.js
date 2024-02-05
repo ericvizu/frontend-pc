@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Motherboard from './db/Motherboard';
 import EditMotherboard from './db/Motherboard/EditMotherboard';
 import Stock from './db/Stock';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (

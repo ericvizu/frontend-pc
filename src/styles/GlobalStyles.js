@@ -20,10 +20,6 @@ export default createGlobalStyle`
     color: ${primaryDarkColor};
   }
 
-  html, body, #root {
-    height: 100%;
-  }
-
   button {
     cursor: pointer;
     background: ${primaryColor};
@@ -34,27 +30,6 @@ export default createGlobalStyle`
     font-weight: 700;
     margin-left: 10px;
     vertical-align: 80%;
-  }
-
-  button.editButton {
-    background: white;
-    border: 2px solid ${editButtonColor};
-    color: ${editButtonColor};
-  }
-
-  button.deleteButton {
-    background: ${deleteButtonColor};
-    border: 2px solid ${deleteButtonColor};
-    color: white;
-  }
-
-  a {
-    text-decoration: none;
-    color: ${primaryColor};
-  }
-
-  ul {
-    list-style: none;
   }
 
 `;
@@ -73,3 +48,29 @@ export const Table = styled.table`
   vertical-align: center;
   width: 100%;
 `;
+
+const GenericButton = styled.button`
+  cursor: pointer;
+  background: ${primaryColor};
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-left: 10px;
+  vertical-align: 80%;
+`;
+
+export const Buttons = {
+  Reload: styled(GenericButton)``,
+  View: styled(GenericButton)`
+    background: white;
+    border: 2px solid ${editButtonColor};
+    color: ${editButtonColor};
+  `,
+  Delete: styled(GenericButton)`
+    background: ${deleteButtonColor};
+    border: 2px solid ${deleteButtonColor};
+    color: white;
+  `,
+};

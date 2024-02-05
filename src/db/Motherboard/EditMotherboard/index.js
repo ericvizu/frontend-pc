@@ -69,6 +69,33 @@ export default function EditMotherboard() {
             />
           </label>
         </div>
+
+        <div>
+          <label htmlFor="Name">
+            Name
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              value={name}
+              onChange={(e) => onInputChange(e)}
+            />
+          </label>
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="Socket" className="form-label">
+            Socket
+            <input
+              className="form-label"
+              type="text"
+              placeholder="Socket"
+              name="socket"
+              value={socket}
+              onChange={(e) => onInputChange(e)}
+            />
+          </label>
+        </div>
         <button type="submit" className="editButton">
           Submit
         </button>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Title } from './styled';
-import { Container, Table } from '../../styles/GlobalStyles';
+import { Container, Table, Buttons } from '../../styles/GlobalStyles';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
@@ -25,9 +25,9 @@ export default function Motherboard() {
     <Container>
       <Title>
         Motherboard
-        <button type="button" onClick={loadMotherboards}>
+        <Buttons.Reload type="button" onClick={loadMotherboards}>
           Recarregar
-        </button>
+        </Buttons.Reload>
       </Title>
       <Table className="">
         <thead>
@@ -65,17 +65,14 @@ export default function Motherboard() {
               <td>{motherboard.stock.quantity}</td>
               <td>
                 <Link to={`/editmotherboard/${motherboard.id}`}>
-                  <button type="button" className="editButton">
-                    Edit
-                  </button>
+                  <Buttons.View type="button">Edit</Buttons.View>
                 </Link>
-                <button
+                <Buttons.Delete
                   type="button"
-                  className="deleteButton"
                   onClick={() => deleteMotherboard(motherboard.id)}
                 >
                   Delete
-                </button>
+                </Buttons.Delete>
               </td>
             </tr>
           ))}
