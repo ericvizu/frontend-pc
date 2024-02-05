@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Title } from './styled';
 import { Container, Table, Buttons } from '../../styles/GlobalStyles';
 
 export default function Motherboard() {
@@ -23,12 +22,12 @@ export default function Motherboard() {
 
   return (
     <Container>
-      <Title>
+      <title>
         Motherboard
         <Buttons.Reload type="button" onClick={loadMotherboards}>
           Recarregar
         </Buttons.Reload>
-      </Title>
+      </title>
       <Table className="">
         <thead>
           <tr>

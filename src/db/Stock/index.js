@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Title } from './styled';
 import { Container, Table } from '../../styles/GlobalStyles';
 
 export default function Stock() {
@@ -18,12 +17,12 @@ export default function Stock() {
 
   return (
     <Container>
-      <Title>
+      <title>
         Stock
         <button type="button" onClick={loadStocks} className="btn btn-danger">
           Recarregar
         </button>
-      </Title>
+      </title>
       <Table className="">
         <thead>
           <tr>

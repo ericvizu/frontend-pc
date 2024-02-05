@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Title } from './styled';
 import { Container } from '../../../styles/GlobalStyles';
 
 export default function EditMotherboard() {
@@ -54,7 +53,7 @@ export default function EditMotherboard() {
 
   return (
     <Container>
-      <Title> Edit Motherboard </Title>
+      <title> Edit Motherboard </title>
 
       <form onSubmit={(e) => onSubmit(e)}>
         <div>

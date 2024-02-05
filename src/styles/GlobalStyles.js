@@ -14,24 +14,15 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  title {
+    font-size: 50px;
+}
+
   body {
     font-family: sans-serif;
     background: ${primaryDarkColor};
     color: ${primaryDarkColor};
   }
-
-  button {
-    cursor: pointer;
-    background: ${primaryColor};
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: 700;
-    margin-left: 10px;
-    vertical-align: 80%;
-  }
-
 `;
 
 export const Container = styled.section`
