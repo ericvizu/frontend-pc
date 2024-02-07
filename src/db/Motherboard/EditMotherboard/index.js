@@ -42,14 +42,13 @@ export default function EditMotherboard() {
     navigate('/motherboard');
   };
 
-  const loadMotherboards = async () => {
-    const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
-    setMotherboards(result.data);
-  };
-
   useEffect(() => {
+    const loadMotherboards = async () => {
+      const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
+      setMotherboards(result.data);
+    };
     loadMotherboards();
-  }, []);
+  }, [id]);
 
   return (
     <Container>

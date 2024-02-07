@@ -8,14 +8,13 @@ export default function ViewMotherboard() {
 
   const { id } = useParams();
 
-  const loadMotherboards = async () => {
-    const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
-    setMotherboards(result.data);
-  };
-
   useEffect(() => {
+    const loadMotherboards = async () => {
+      const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
+      setMotherboards(result.data);
+    };
     loadMotherboards();
-  }, []);
+  }, [id]);
 
   return (
     <Container>
