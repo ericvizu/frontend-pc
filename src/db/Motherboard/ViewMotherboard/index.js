@@ -4,7 +4,18 @@ import { useParams, Link } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
 
 export default function ViewMotherboard() {
-  const [motherboard, setMotherboards] = useState([]);
+  const [motherboard, setMotherboards] = useState({
+    brand: '',
+    name: '',
+    socket: '',
+    ramGen: '',
+    ramSlots: '',
+    ramFreq: '',
+    sataSlots: '',
+    m2Gen4Slots: '',
+    m2Gen3Slots: '',
+    stock: '',
+  });
 
   const { id } = useParams();
 
