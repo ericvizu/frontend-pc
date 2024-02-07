@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
 
 export default function ViewMotherboard() {
+  // Empty values so that loadMotherboards function has time to update "motherboard.stock.quantity"
   const [motherboard, setMotherboards] = useState({
     brand: '',
     name: '',
@@ -17,8 +18,10 @@ export default function ViewMotherboard() {
     stock: '',
   });
 
+  // Get ID from URL
   const { id } = useParams();
 
+  // GET Motherboard from database and load the page
   useEffect(() => {
     const loadMotherboards = async () => {
       const result = await axios.get(`http://localhost:8080/motherboard/${id}`);

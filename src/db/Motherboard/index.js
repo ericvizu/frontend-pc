@@ -6,16 +6,19 @@ import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
+  // GET Motherboard from database
   const loadMotherboards = async () => {
     const result = await axios.get('http://localhost:8080/motherboard');
     setMotherboards(result.data);
   };
 
+  // DELETE Motherboard from database and updates the page
   const deleteMotherboard = async (id) => {
     await axios.delete(`http://localhost:8080/motherboard/${id}`);
     loadMotherboards();
   };
 
+  // Load the page
   useEffect(() => {
     loadMotherboards();
   }, []);

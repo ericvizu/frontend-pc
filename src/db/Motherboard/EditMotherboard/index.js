@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Container } from '../../../styles/GlobalStyles';
+import { useNavigate, useParams, Link } from 'react-router-dom';
+import { Container, Buttons } from '../../../styles/GlobalStyles';
 
 export default function EditMotherboard() {
   const navigate = useNavigate();
 
+  // Get ID from URL
   const { id } = useParams();
 
+  // Empty values to be updated after get
   const [motherboard, setMotherboards] = useState({
     brand: '',
     name: '',
@@ -32,16 +34,19 @@ export default function EditMotherboard() {
     m2Gen3Slots,
   } = motherboard;
 
+  // Changes value from where is being written
   const onInputChange = (e) => {
     setMotherboards({ ...motherboard, [e.target.name]: e.target.value });
   };
 
+  // PUT Motherboard with new values where the old one was
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:8080/motherboard/${id}`, motherboard);
     navigate('/motherboard');
   };
 
+  // GET Motherboards and load the page
   useEffect(() => {
     const loadMotherboards = async () => {
       const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
@@ -97,9 +102,9 @@ export default function EditMotherboard() {
         <button type="submit" className="editButton">
           Submit
         </button>
-        <button type="submit" className="deleteButton">
-          Cancel
-        </button>
+        <Link to="/motherboard">
+          <Buttons.Cancel type="button">Cancel</Buttons.Cancel>
+        </Link>
       </form>
     </Container>
   );
