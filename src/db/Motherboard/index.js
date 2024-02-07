@@ -25,7 +25,7 @@ export default function Motherboard() {
       <h1>
         Motherboard
         <Buttons.Reload type="button" onClick={loadMotherboards}>
-          Recarregar
+          Reload
         </Buttons.Reload>
       </h1>
       <Table className="">
@@ -64,7 +64,10 @@ export default function Motherboard() {
               <td>{motherboard.stock.quantity}</td>
               <td>
                 <Link to={`/editmotherboard/${motherboard.id}`}>
-                  <Buttons.View type="button">Edit</Buttons.View>
+                  <Buttons.View type="button">View</Buttons.View>
+                </Link>
+                <Link to={`/editmotherboard/${motherboard.id}`}>
+                  <Buttons.Edit type="button">Edit</Buttons.Edit>
                 </Link>
                 <Buttons.Delete
                   type="button"

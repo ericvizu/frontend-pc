@@ -41,28 +41,43 @@ export const Table = styled.table`
   width: 100%;
 `;
 
-const GenericButton = styled.button`
+const GenericButton = styled.button.attrs({
+  className: 'btn',
+})`
   cursor: pointer;
-  background: ${primaryColor};
+  //background: ${primaryColor};
   border: none;
   color: #fff;
-  padding: 10px 20px;
+  padding: 5px 15px;
   border-radius: 4px;
   font-weight: 700;
   margin-left: 10px;
-  vertical-align: 80%;
+  vertical-align: 50%;
 `;
 
 export const Buttons = {
-  Reload: styled(GenericButton)``,
-  View: styled(GenericButton)`
+  Reload: styled(GenericButton).attrs({
+    className: 'btn-dark',
+  })`
+    border: 2px solid black;
+  `,
+  Edit: styled(GenericButton).attrs({
+    className: '',
+  })`
     background: white;
     border: 2px solid ${editButtonColor};
     color: ${editButtonColor};
   `,
-  Delete: styled(GenericButton)`
+  Delete: styled(GenericButton).attrs({
+    className: 'btn-danger',
+  })`
     background: ${deleteButtonColor};
     border: 2px solid ${deleteButtonColor};
     color: white;
+  `,
+  View: styled(GenericButton).attrs({
+    className: 'btn-info',
+  })`
+    border: 2px solid #0dcaf0;
   `,
 };
