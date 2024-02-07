@@ -35,11 +35,22 @@ export const Container = styled.section`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
-export const Table = styled.table`
+const GenericTable = styled.table.attrs({
+  className: 'table table-hover',
+})`
   text-align: center;
   vertical-align: center;
   width: 100%;
 `;
+
+export const Tables = {
+  Inventory: styled(GenericTable)``,
+  View: styled(GenericTable)`
+    width: 100%;
+    font-size: 30px;
+    text-align: left;
+  `,
+};
 
 const GenericButton = styled.button.attrs({
   className: 'btn',
@@ -60,9 +71,10 @@ export const Buttons = {
     className: 'btn-dark',
   })`
     border: 2px solid black;
+    padding: 5px 25px;
   `,
   Edit: styled(GenericButton).attrs({
-    className: '',
+    className: 'btn-primary',
   })`
     background: white;
     border: 2px solid ${editButtonColor};
@@ -79,5 +91,17 @@ export const Buttons = {
     className: 'btn-info',
   })`
     border: 2px solid #0dcaf0;
+
+    &:hover {
+      color: white;
+    }
+  `,
+  Cancel: styled(GenericButton).attrs({
+    className: 'btn-danger',
+  })`
+    background: white;
+    border: 2px solid red;
+    color: red;
+    padding: 5px 25px;
   `,
 };

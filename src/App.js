@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Motherboard from './db/Motherboard';
 import EditMotherboard from './db/Motherboard/EditMotherboard';
+import ViewMotherboard from './db/Motherboard/ViewMotherboard';
 import Stock from './db/Stock';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -18,6 +19,11 @@ function App() {
           exact
           path="/editmotherboard/:id"
           element={<EditMotherboard />}
+        />
+        <Route
+          exact
+          path="/viewmotherboard/:id"
+          element={<ViewMotherboard />}
         />
         <Route exact path="/stock" element={<Stock />} />
       </Routes>

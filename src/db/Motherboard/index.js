@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Table, Buttons } from '../../styles/GlobalStyles';
+import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
@@ -28,7 +28,7 @@ export default function Motherboard() {
           Reload
         </Buttons.Reload>
       </h1>
-      <Table className="">
+      <Tables.Inventory className="">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -63,7 +63,7 @@ export default function Motherboard() {
               <td>{motherboard.m2Gen3Slots}</td>
               <td>{motherboard.stock.quantity}</td>
               <td>
-                <Link to={`/editmotherboard/${motherboard.id}`}>
+                <Link to={`/viewmotherboard/${motherboard.id}`}>
                   <Buttons.View type="button">View</Buttons.View>
                 </Link>
                 <Link to={`/editmotherboard/${motherboard.id}`}>
@@ -79,7 +79,7 @@ export default function Motherboard() {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </Tables.Inventory>
     </Container>
   );
 }
