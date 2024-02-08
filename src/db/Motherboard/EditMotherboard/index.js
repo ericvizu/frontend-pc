@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { Container, Buttons } from '../../../styles/GlobalStyles';
+import { Container, Buttons, Form } from '../../../styles/GlobalStyles';
 
 export default function EditMotherboard() {
   const navigate = useNavigate();
@@ -57,44 +57,69 @@ export default function EditMotherboard() {
 
   return (
     <Container>
-      <h1> Edit Motherboard </h1>
+      <h1> Change Motherboard </h1>
 
-      <form onSubmit={(e) => onSubmit(e)}>
+      <Form onSubmit={(e) => onSubmit(e)}>
+        <h3>
+          Please change the Motherboard infos and press Submit, or press Cancel
+          to go back.
+        </h3>
         <div>
-          <label htmlFor="Brand">
-            Brand
-            <input
-              type="text"
-              placeholder="Brand"
-              name="brand"
-              value={brand}
-              onChange={(e) => onInputChange(e)}
-            />
+          <label htmlFor="Brand" className="form-label">
+            <div className="input-group">
+              <span className="input-group-text">Brand</span>
+              <input
+                id="Brand"
+                className="form-control"
+                type="text"
+                placeholder="Brand"
+                name="brand"
+                value={brand}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </label>
         </div>
-
         <div>
-          <label htmlFor="Name">
-            Name
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={(e) => onInputChange(e)}
-            />
+          <label htmlFor="Name" className="form-label">
+            <div className="input-group">
+              <span className="input-group-text">Name</span>
+              <input
+                id="Name"
+                className="form-control"
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={name}
+                onChange={(e) => onInputChange(e)}
+              />
+            </div>
           </label>
         </div>
-
-        <div className="mb-3">
+        <div>
           <label htmlFor="Socket" className="form-label">
             Socket
             <input
-              className="form-label"
+              id="Socket"
+              className="form-control"
               type="text"
               placeholder="Socket"
               name="socket"
               value={socket}
+              onChange={(e) => onInputChange(e)}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="RamGen" className="form-label">
+            Socket
+            <input
+              id="RamGen"
+              className="form-control"
+              type="text"
+              placeholder="RAM Gen"
+              name="ramGen"
+              value={ramGen}
               onChange={(e) => onInputChange(e)}
             />
           </label>
@@ -105,7 +130,7 @@ export default function EditMotherboard() {
         <Link to="/motherboard">
           <Buttons.Cancel type="button">Cancel</Buttons.Cancel>
         </Link>
-      </form>
+      </Form>
     </Container>
   );
 }

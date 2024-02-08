@@ -105,3 +105,10 @@ export const Buttons = {
     padding: 5px 25px;
   `,
 };
+
+export const Form = styled.form.attrs({
+  className: '',
+})`
+  label {
+  }
+`;
