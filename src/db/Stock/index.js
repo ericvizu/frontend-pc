@@ -44,7 +44,7 @@ export default function Stock() {
               <td>{stock.category}</td>
               <td>{stock.quantity}</td>
               <td>
-                <Link to={`/editstock/${stock.id}`}>
+                <Link to={`/stock/edit/${stock.id}`}>
                   <Buttons.Edit type="button">Edit</Buttons.Edit>
                 </Link>
               </td>

@@ -58,10 +58,10 @@ export default function Motherboard() {
               <td>{motherboard.ramSlots}</td>
               <td>{motherboard.stock.quantity}</td>
               <td>
-                <Link to={`/viewmotherboard/${motherboard.id}`}>
+                <Link to={`/motherboard/view/${motherboard.id}`}>
                   <Buttons.View type="button">View</Buttons.View>
                 </Link>
-                <Link to={`/editmotherboard/${motherboard.id}`}>
+                <Link to={`/motherboard/edit/${motherboard.id}`}>
                   <Buttons.Edit type="button">Edit</Buttons.Edit>
                 </Link>
                 <Buttons.Delete

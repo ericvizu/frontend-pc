@@ -17,12 +17,12 @@ function App() {
         <Route exact path="/motherboard" element={<Motherboard />} />
         <Route
           exact
-          path="/editmotherboard/:id"
+          path="/motherboard/edit/:id"
           element={<EditMotherboard />}
         />
         <Route
           exact
-          path="/viewmotherboard/:id"
+          path="/motherboard/view/:id"
           element={<ViewMotherboard />}
         />
         <Route exact path="/stock" element={<Stock />} />
