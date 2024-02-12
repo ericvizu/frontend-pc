@@ -57,7 +57,11 @@ export default function EditMotherboard() {
 
   return (
     <Container>
-      <h1> Change Motherboard </h1>
+      <div className="row">
+        <div className="col-md-auto">
+          <h1> Change Motherboard </h1>
+        </div>
+      </div>
 
       <Form onSubmit={(e) => onSubmit(e)}>
         <h3>

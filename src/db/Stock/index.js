@@ -17,12 +17,16 @@ export default function Stock() {
 
   return (
     <Container>
-      <h1>
-        Stock
-        <Buttons.Reload type="button" onClick={loadStocks}>
-          Reload
-        </Buttons.Reload>
-      </h1>
+      <div className="row">
+        <div className="col-md-auto">
+          <h1>Stock</h1>
+        </div>
+        <div className="col">
+          <Buttons.Reload type="button" onClick={loadStocks}>
+            Reload
+          </Buttons.Reload>
+        </div>
+      </div>
       <Tables.Inventory className="">
         <thead>
           <tr>

@@ -32,13 +32,19 @@ export default function ViewMotherboard() {
 
   return (
     <Container>
-      <h1>
-        {motherboard.brand} {motherboard.name} (id: {motherboard.id}) (stock:{' '}
-        {motherboard.stock.quantity})
-        <Link to="/motherboard">
-          <Buttons.Cancel type="button">Return</Buttons.Cancel>
-        </Link>
-      </h1>
+      <div className="row">
+        <div className="col-md-auto">
+          <h1>
+            {motherboard.brand} {motherboard.name} (id: {motherboard.id})
+            (stock: {motherboard.stock.quantity})
+          </h1>
+        </div>
+        <div className="col">
+          <Link to="/motherboard">
+            <Buttons.Cancel type="button">Return</Buttons.Cancel>
+          </Link>
+        </div>
+      </div>
       <Tables.View>
         <tbody>
           <tr>

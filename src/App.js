@@ -7,6 +7,7 @@ import EditMotherboard from './db/Motherboard/EditMotherboard';
 import ViewMotherboard from './db/Motherboard/ViewMotherboard';
 import Stock from './db/Stock';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 
 function App() {
   return (

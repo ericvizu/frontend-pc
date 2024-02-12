@@ -25,12 +25,16 @@ export default function Motherboard() {
 
   return (
     <Container>
-      <h1>
-        Motherboard
-        <Buttons.Reload type="button" onClick={loadMotherboards}>
-          Reload
-        </Buttons.Reload>
-      </h1>
+      <div className="row">
+        <div className="col-md-auto">
+          <h1>Motherboard</h1>
+        </div>
+        <div className="col">
+          <Buttons.Reload type="button" onClick={loadMotherboards}>
+            Reload
+          </Buttons.Reload>
+        </div>
+      </div>
       <Tables.Inventory className="">
         <thead>
           <tr>
