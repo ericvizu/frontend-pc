@@ -1,21 +1,19 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
+import { loadEntity, deleteEntity } from '../functions';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
   // GET Motherboard from database
-  const loadMotherboards = async () => {
-    const result = await axios.get('http://localhost:8080/motherboard');
-    setMotherboards(result.data);
+  const loadMotherboards = () => {
+    loadEntity('motherboard').then((m) => setMotherboards(m));
   };
 
   // DELETE Motherboard from database and updates the page
-  const deleteMotherboard = async (id) => {
-    await axios.delete(`http://localhost:8080/motherboard/${id}`);
-    loadMotherboards();
+  const deleteMotherboard = (id) => {
+    deleteEntity('motherboard', id).then(loadMotherboards);
   };
 
   // Load the page
