@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <Container>
       <Title>Home</Title>
-      <Paragrafo> Seja bem-vindo à tela inicial da minha aplicação </Paragrafo>
+      <Paragrafo> Welcome to the homepage of my application. </Paragrafo>
     </Container>
   );
 }

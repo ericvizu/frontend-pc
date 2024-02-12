@@ -18,7 +18,6 @@ export default createGlobalStyle`
     font-size: 50px;
 }
 
-
   body {
     font-family: sans-serif;
     background: ${primaryDarkColor};
@@ -39,6 +38,18 @@ export const Container = styled.section`
   }
   div ~ h5 {
     margin-top: 10px;
+  }
+  // Remove the arrows from input tag (Chrome, Safari, Edge, Opera)
+  input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+  // Remove the arrows from input tag (Firefox)
+  input[type='number'] {
+    appearance: textfield;
+  }
+  td.uppercase {
+    text-transform: uppercase;
   }
 `;
 
@@ -79,6 +90,7 @@ export const Buttons = {
   })`
     border: 2px solid black;
     padding: 5px 25px;
+    background: black;
   `,
   Edit: styled(GenericButton).attrs({
     className: 'btn-primary',

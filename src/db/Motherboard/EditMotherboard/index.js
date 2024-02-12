@@ -74,6 +74,7 @@ export default function EditMotherboard() {
                   id="Brand"
                   className="form-control"
                   type="text"
+                  required
                   placeholder="Brand"
                   name="brand"
                   value={brand}
@@ -90,6 +91,7 @@ export default function EditMotherboard() {
                   id="Name"
                   className="form-control"
                   type="text"
+                  required
                   placeholder="Name"
                   name="name"
                   value={name}
@@ -110,6 +112,7 @@ export default function EditMotherboard() {
                   id="Socket"
                   className="form-control"
                   type="text"
+                  required
                   placeholder="Socket"
                   name="socket"
                   value={socket}
@@ -130,6 +133,7 @@ export default function EditMotherboard() {
                   id="RamGen"
                   className="form-control"
                   type="text"
+                  required
                   placeholder="RAM Gen"
                   name="ramGen"
                   value={ramGen}
@@ -145,7 +149,8 @@ export default function EditMotherboard() {
                 <input
                   id="RamSlots"
                   className="form-control"
-                  type="text"
+                  type="number"
+                  required
                   placeholder="RAM Slots"
                   name="ramSlots"
                   value={ramSlots}
@@ -161,7 +166,8 @@ export default function EditMotherboard() {
                 <input
                   id="RamFreq"
                   className="form-control"
-                  type="text"
+                  type="number"
+                  required
                   placeholder="RAM Frequency"
                   name="ramFreq"
                   value={ramFreq}
@@ -181,7 +187,8 @@ export default function EditMotherboard() {
                 <input
                   id="SataSlots"
                   className="form-control"
-                  type="text"
+                  type="number"
+                  required
                   placeholder="SATA Slots"
                   name="sataSlots"
                   value={sataSlots}
@@ -201,7 +208,8 @@ export default function EditMotherboard() {
                 <input
                   id="M2Gen4Slots"
                   className="form-control"
-                  type="text"
+                  type="number"
+                  required
                   placeholder="M.2 Gen4 Slots"
                   name="m2Gen4Slots"
                   value={m2Gen4Slots}
@@ -217,7 +225,8 @@ export default function EditMotherboard() {
                 <input
                   id="M2Gen3Slots"
                   className="form-control"
-                  type="text"
+                  type="number"
+                  required
                   placeholder="M.2 Gen3 Slots"
                   name="m2Gen3Slots"
                   value={m2Gen3Slots}

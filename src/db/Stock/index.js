@@ -41,7 +41,7 @@ export default function Stock() {
                 {index + 1}
               </th>
               <td>{stock.name}</td>
-              <td>{stock.category}</td>
+              <td className="uppercase">{stock.category}</td>
               <td>{stock.quantity}</td>
               <td>
                 <Link to={`/stock/edit/${stock.id}`}>
