@@ -6,6 +6,8 @@ import { loadAll, deleteEntity } from '../functions';
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
+  const nameArray = ['LMAO', 'KEKW'];
+
   // GET Motherboard from database
   const loadMotherboards = () => {
     loadAll('motherboard').then((m) => setMotherboards(m));
@@ -46,6 +48,35 @@ export default function Motherboard() {
             <th scope="col">Actions</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            {/* eslint-disable jsx-a11y/control-has-associated-label */}
+            <td />
+            <td>
+              <select className="form-select form-select-sm" aria-label="Brand">
+                <option selected> ------------ </option>
+                <option value="1"> ASRock </option>
+                <option value="1"> Gigabyte </option>
+              </select>
+            </td>
+            <td>
+              <select className="form-select form-select-sm" aria-label="Name">
+                <option selected> ------------ </option>
+                {nameArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </select>
+            </td>
+            <td>Filter</td>
+            <td>Filter</td>
+            <td>Filter</td>
+            <td>No Filter</td>
+            <td>ResetFilterButton</td>
+            {/* eslint-enable jsx-a11y/control-has-associated-label */}
+          </tr>
+        </tbody>
         <tbody>
           {motherboards.map((motherboard, index) => (
             <tr>

@@ -43,7 +43,7 @@ export default function EditMotherboard() {
   const onSubmit = async (e) => {
     e.preventDefault();
     updateEntity('motherboard', id, motherboard);
-    navigate('/motherboard');
+    navigate('/motherboard'); // FIXME De vez em quando não tá atualizando depois de dar Submit. Geralmente após escrever e apertar Enter
   };
 
   // GET Motherboards and load the page
