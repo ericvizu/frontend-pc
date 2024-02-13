@@ -16,3 +16,8 @@ export const loadEntity = async (category, id) => {
 export const deleteEntity = async (category, id) => {
   await axios.delete(`http://localhost:8080/${category}/${id}`);
 };
+
+// PUT Entity
+export const updateEntity = async (category, id, entity) => {
+  await axios.put(`http://localhost:8080/${category}/${id}`, entity);
+};

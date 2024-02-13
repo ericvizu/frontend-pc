@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Container, Buttons, Form } from '../../../styles/GlobalStyles';
+import { loadEntity, updateEntity } from '../../functions';
 
 export default function EditMotherboard() {
   const navigate = useNavigate();
@@ -42,15 +42,14 @@ export default function EditMotherboard() {
   // PUT Motherboard with new values where the old one was
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/motherboard/${id}`, motherboard);
+    updateEntity('motherboard', id, motherboard);
     navigate('/motherboard');
   };
 
   // GET Motherboards and load the page
   useEffect(() => {
-    const loadMotherboards = async () => {
-      const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
-      setMotherboards(result.data);
+    const loadMotherboards = () => {
+      loadEntity('motherboard', id).then((m) => setMotherboards(m));
     };
     loadMotherboards();
   }, [id]);
@@ -166,7 +165,7 @@ export default function EditMotherboard() {
           <div>
             <label htmlFor="RamFreq" className="form-label">
               <div className="input-group">
-                <span className="input-group-text">RAM Frequency</span>
+                <span className="input-group-text">RAM Frequency (MHz)</span>
                 <input
                   id="RamFreq"
                   className="form-control"
