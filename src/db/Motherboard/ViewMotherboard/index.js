@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
