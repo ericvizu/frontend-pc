@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
-import { loadEntity, deleteEntity } from '../functions';
+import { loadAll, deleteEntity } from '../functions';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
   // GET Motherboard from database
   const loadMotherboards = () => {
-    loadEntity('motherboard').then((m) => setMotherboards(m));
+    loadAll('motherboard').then((m) => setMotherboards(m));
   };
 
   // DELETE Motherboard from database and updates the page

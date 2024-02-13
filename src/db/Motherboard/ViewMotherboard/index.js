@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
+import { loadEntity } from '../../functions';
 
 export default function ViewMotherboard() {
   // Empty values so that loadMotherboards function has time to update "motherboard.stock.quantity"
@@ -23,9 +24,8 @@ export default function ViewMotherboard() {
 
   // GET Motherboard from database and load the page
   useEffect(() => {
-    const loadMotherboards = async () => {
-      const result = await axios.get(`http://localhost:8080/motherboard/${id}`);
-      setMotherboards(result.data);
+    const loadMotherboards = () => {
+      loadEntity('motherboard', id).then((m) => setMotherboards(m));
     };
     loadMotherboards();
   }, [id]);
