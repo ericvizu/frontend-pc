@@ -6,6 +6,7 @@ import { loadAll, deleteEntity } from '../functions';
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
+  // REFACTOR \/
   const brandArray = [];
   const nameArray = [];
 
@@ -13,6 +14,7 @@ export default function Motherboard() {
     if (brandArray.includes(m.brand) === false) brandArray.push(m.brand);
     if (nameArray.includes(m.name) === false) nameArray.push(m.name);
   });
+  // REFACTOR /\
 
   // GET Motherboard from database
   const loadMotherboards = () => {
@@ -43,7 +45,7 @@ export default function Motherboard() {
           </Buttons.Reload>
         </div>
       </div>
-      <Tables.Inventory className="">
+      <Tables.Inventory>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -61,8 +63,13 @@ export default function Motherboard() {
             {/* eslint-disable jsx-a11y/control-has-associated-label */}
             <td />
             <td>
-              <select className="form-select form-select-sm" aria-label="Brand">
-                <option selected> ------------ </option>
+              <select
+                className="form-select form-select-sm"
+                aria-label="Brand"
+                name="customFilter"
+                defaultValue="------------"
+              >
+                <option> ------------ </option>
                 {brandArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -71,8 +78,13 @@ export default function Motherboard() {
               </select>
             </td>
             <td>
-              <select className="form-select form-select-sm" aria-label="Name">
-                <option selected> ------------ </option>
+              <select
+                className="form-select form-select-sm"
+                aria-label="Name"
+                name="customFilter"
+                defaultValue="------------"
+              >
+                <option> ------------ </option>
                 {nameArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -90,11 +102,8 @@ export default function Motherboard() {
         </tbody>
         <tbody>
           {motherboards.map((motherboard, index) => (
-            <tr>
-              {/* eslint-disable-next-line react/no-array-index-key */}
-              <th scope="row" key={index}>
-                {index + 1}
-              </th>
+            <tr key={motherboard.id}>
+              <th scope="row">{index + 1}</th>
               <td>{motherboard.brand}</td>
               <td>{motherboard.name}</td>
               <td>{motherboard.socket}</td>

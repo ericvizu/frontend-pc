@@ -27,7 +27,7 @@ export default function Stock() {
           </Buttons.Reload>
         </div>
       </div>
-      <Tables.Inventory className="">
+      <Tables.Inventory>
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -39,11 +39,8 @@ export default function Stock() {
         </thead>
         <tbody>
           {stocks.map((stock, index) => (
-            <tr>
-              {/* eslint-disable-next-line react/no-array-index-key */}
-              <th scope="row" key={index}>
-                {index + 1}
-              </th>
+            <tr key={stock.id}>
+              <th scope="row">{index + 1}</th>
               <td>{stock.name}</td>
               <td className="uppercase">{stock.category}</td>
               <td>{stock.quantity}</td>
