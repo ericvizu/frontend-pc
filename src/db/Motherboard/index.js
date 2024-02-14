@@ -6,11 +6,19 @@ import { loadAll, deleteEntity } from '../functions';
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
-  const nameArray = ['LMAO', 'KEKW'];
+  const brandArray = [];
+  const nameArray = [];
+
+  motherboards.forEach((m) => {
+    if (brandArray.includes(m.brand) === false) brandArray.push(m.brand);
+    if (nameArray.includes(m.name) === false) nameArray.push(m.name);
+  });
 
   // GET Motherboard from database
   const loadMotherboards = () => {
-    loadAll('motherboard').then((m) => setMotherboards(m));
+    loadAll('motherboard').then(async (m) => {
+      setMotherboards(m);
+    });
   };
 
   // DELETE Motherboard from database and updates the page
@@ -55,8 +63,11 @@ export default function Motherboard() {
             <td>
               <select className="form-select form-select-sm" aria-label="Brand">
                 <option selected> ------------ </option>
-                <option value="1"> ASRock </option>
-                <option value="1"> Gigabyte </option>
+                {brandArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
               </select>
             </td>
             <td>

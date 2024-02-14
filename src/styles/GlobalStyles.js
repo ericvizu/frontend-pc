@@ -23,6 +23,10 @@ export default createGlobalStyle`
     background: ${primaryDarkColor};
     color: ${primaryDarkColor};
   }
+  p.githubLink {
+  text-align: center;
+  padding-top: 50px;
+  }
 `;
 
 export const Container = styled.section`
