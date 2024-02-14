@@ -72,6 +72,11 @@ export const Tables = {
     font-size: 30px;
     text-align: left;
   `,
+  SelectFilter: styled.select.attrs({
+    className: 'form-select form-select-sm',
+    defaultValue: '------------',
+    name: 'filter',
+  })``,
 };
 
 const GenericButton = styled.button.attrs({

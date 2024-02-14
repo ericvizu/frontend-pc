@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
 import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
 import { loadAll, deleteEntity } from '../functions';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
@@ -9,10 +11,17 @@ export default function Motherboard() {
   // REFACTOR \/
   const brandArray = [];
   const nameArray = [];
+  const socketArray = [];
+  const ramGenArray = [];
+  const ramSlotsArray = [];
 
   motherboards.forEach((m) => {
     if (brandArray.includes(m.brand) === false) brandArray.push(m.brand);
     if (nameArray.includes(m.name) === false) nameArray.push(m.name);
+    if (socketArray.includes(m.socket) === false) socketArray.push(m.socket);
+    if (ramGenArray.includes(m.ramGen) === false) ramGenArray.push(m.ramGen);
+    if (ramSlotsArray.includes(m.ramSlots) === false)
+      ramSlotsArray.push(m.ramSlots);
   });
   // REFACTOR /\
 
@@ -25,7 +34,19 @@ export default function Motherboard() {
 
   // DELETE Motherboard from database and updates the page
   const deleteMotherboard = (id) => {
-    deleteEntity('motherboard', id).then(loadMotherboards);
+    confirmAlert({
+      title: 'Confirm delete',
+      message: 'Are you sure about this?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => deleteEntity('motherboard', id).then(loadMotherboards),
+        },
+        {
+          label: 'No',
+        },
+      ],
+    });
   };
 
   // Load the page
@@ -63,39 +84,56 @@ export default function Motherboard() {
             {/* eslint-disable jsx-a11y/control-has-associated-label */}
             <td />
             <td>
-              <select
-                className="form-select form-select-sm"
-                aria-label="Brand"
-                name="customFilter"
-                defaultValue="------------"
-              >
+              <Tables.SelectFilter aria-label="Brand">
                 <option> ------------ </option>
                 {brandArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
                   </option>
                 ))}
-              </select>
+              </Tables.SelectFilter>
             </td>
             <td>
-              <select
-                className="form-select form-select-sm"
-                aria-label="Name"
-                name="customFilter"
-                defaultValue="------------"
-              >
+              <Tables.SelectFilter aria-label="Name">
                 <option> ------------ </option>
                 {nameArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
                   </option>
                 ))}
-              </select>
+              </Tables.SelectFilter>
             </td>
-            <td>Filter</td>
-            <td>Filter</td>
-            <td>Filter</td>
-            <td>No Filter</td>
+            <td>
+              <Tables.SelectFilter aria-label="Name">
+                <option> ------------ </option>
+                {socketArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </Tables.SelectFilter>
+            </td>
+            <td>
+              <Tables.SelectFilter aria-label="Name">
+                <option> ------------ </option>
+                {ramGenArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </Tables.SelectFilter>
+            </td>
+            <td>
+              <Tables.SelectFilter aria-label="Name">
+                <option> ------------ </option>
+                {ramSlotsArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </Tables.SelectFilter>
+            </td>
+            <td />
             <td>ResetFilterButton</td>
             {/* eslint-enable jsx-a11y/control-has-associated-label */}
           </tr>
@@ -119,7 +157,9 @@ export default function Motherboard() {
                 </Link>
                 <Buttons.Delete
                   type="button"
-                  onClick={() => deleteMotherboard(motherboard.id)}
+                  onClick={() => {
+                    deleteMotherboard(motherboard.id);
+                  }}
                 >
                   Delete
                 </Buttons.Delete>

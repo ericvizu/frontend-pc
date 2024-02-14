@@ -7,7 +7,11 @@ export default function Home() {
       <Title>Home</Title>
       <Paragrafo> Welcome to the homepage of my application. </Paragrafo>
       <p className="githubLink">
-        github: <a href="https://github.com/ericvizu">ericvizu</a>.
+        github:{' '}
+        <a target="_blank" href="https://github.com/ericvizu" rel="noreferrer">
+          ericvizu
+        </a>
+        .
       </p>
     </Container>
   );
