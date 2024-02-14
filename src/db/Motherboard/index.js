@@ -104,7 +104,7 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="Name">
+              <Tables.SelectFilter aria-label="Socket">
                 <option> ------------ </option>
                 {socketArray.map((e) => (
                   <option value={e} key={e}>
@@ -114,7 +114,7 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="Name">
+              <Tables.SelectFilter aria-label="RamGen">
                 <option> ------------ </option>
                 {ramGenArray.map((e) => (
                   <option value={e} key={e}>
@@ -124,7 +124,7 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="Name">
+              <Tables.SelectFilter aria-label="RamSlots">
                 <option> ------------ </option>
                 {ramSlotsArray.map((e) => (
                   <option value={e} key={e}>
@@ -134,7 +134,18 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td />
-            <td>ResetFilterButton</td>
+            <td>
+              <Buttons.ResetFilter
+                onClick={() => {
+                  document.getElementsByName('filterSelect').forEach((b) => {
+                    // eslint-disable-next-line no-param-reassign
+                    b.selectedIndex = 0;
+                  });
+                }}
+              >
+                Reset Filters
+              </Buttons.ResetFilter>
+            </td>
             {/* eslint-enable jsx-a11y/control-has-associated-label */}
           </tr>
         </tbody>

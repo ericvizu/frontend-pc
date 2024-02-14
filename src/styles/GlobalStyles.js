@@ -75,7 +75,7 @@ export const Tables = {
   SelectFilter: styled.select.attrs({
     className: 'form-select form-select-sm',
     defaultValue: '------------',
-    name: 'filter',
+    name: 'filterSelect',
   })``,
 };
 
@@ -130,6 +130,11 @@ export const Buttons = {
     background: white;
     border: 2px solid red;
     color: red;
+    padding: 5px 25px;
+  `,
+  ResetFilter: styled(GenericButton).attrs({
+    className: 'btn-success',
+  })`
     padding: 5px 25px;
   `,
 };
