@@ -21,3 +21,8 @@ export const deleteEntity = async (category, id) => {
 export const updateEntity = async (category, id, entity) => {
   await axios.put(`http://localhost:8080/${category}/${id}`, entity);
 };
+
+// Verify if already has item in array, only add if doesn't
+export const verifyDuplicate = (array, item) => {
+  if (array.includes(item) === false) array.push(item);
+};

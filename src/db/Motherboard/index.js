@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
-import { loadAll, deleteEntity } from '../functions';
+import { loadAll, deleteEntity, verifyDuplicate } from '../functions';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
-  // REFACTOR \/
   const brandArray = [];
   const nameArray = [];
   const socketArray = [];
@@ -16,14 +15,12 @@ export default function Motherboard() {
   const ramSlotsArray = [];
 
   motherboards.forEach((m) => {
-    if (brandArray.includes(m.brand) === false) brandArray.push(m.brand);
-    if (nameArray.includes(m.name) === false) nameArray.push(m.name);
-    if (socketArray.includes(m.socket) === false) socketArray.push(m.socket);
-    if (ramGenArray.includes(m.ramGen) === false) ramGenArray.push(m.ramGen);
-    if (ramSlotsArray.includes(m.ramSlots) === false)
-      ramSlotsArray.push(m.ramSlots);
+    verifyDuplicate(brandArray, m.brand);
+    verifyDuplicate(nameArray, m.name);
+    verifyDuplicate(socketArray, m.socket);
+    verifyDuplicate(ramGenArray, m.ramGen);
+    verifyDuplicate(ramSlotsArray, m.ramSlots);
   });
-  // REFACTOR /\
 
   // GET Motherboard from database
   const loadMotherboards = () => {
@@ -33,6 +30,7 @@ export default function Motherboard() {
   };
 
   // DELETE Motherboard from database and updates the page
+  // Refactor if possible
   const deleteMotherboard = (id) => {
     confirmAlert({
       title: 'Confirm delete',

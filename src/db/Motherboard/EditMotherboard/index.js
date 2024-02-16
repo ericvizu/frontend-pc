@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { Container, Buttons, Form } from '../../../styles/GlobalStyles';
+import { Container, Buttons, Edit } from '../../../styles/GlobalStyles';
 import { loadEntity, updateEntity } from '../../functions';
 
 export default function EditMotherboard() {
@@ -62,29 +62,27 @@ export default function EditMotherboard() {
         </div>
       </div>
 
-      <Form onSubmit={(e) => onSubmit(e)}>
+      <form onSubmit={(e) => onSubmit(e)}>
         <h3>
           Please change the Motherboard infos and press Submit, or press Cancel
           to go back.
         </h3>
         <h5>Name</h5>
-        <div className="card card-body">
+        <Edit.Card>
           <div>
-            <label htmlFor="Brand" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">Brand</span>
-                <input
+            <Edit.Label htmlFor="Brand">
+              <Edit.Div>
+                <Edit.Span>Brand</Edit.Span>
+                <Edit.Input
                   id="Brand"
-                  className="form-control"
                   type="text"
-                  required
                   placeholder="Brand"
                   name="brand"
                   value={brand}
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
           <div>
             <label htmlFor="Name" className="form-label">
@@ -103,7 +101,7 @@ export default function EditMotherboard() {
               </div>
             </label>
           </div>
-        </div>
+        </Edit.Card>
 
         <h5>CPU</h5>
         <div className="card card-body">
@@ -146,13 +144,14 @@ export default function EditMotherboard() {
             </label>
           </div>
           <div>
-            <label htmlFor="RamSlots" className="form-label">
+            <Edit.Label htmlFor="RamSlots" className="form-label">
               <div className="input-group">
                 <span className="input-group-text">RAM Slots</span>
-                <input
+                <Edit.InputNumber
                   id="RamSlots"
                   className="form-control"
-                  type="number"
+                  // type="number"
+                  size="number"
                   required
                   placeholder="RAM Slots"
                   name="ramSlots"
@@ -160,7 +159,7 @@ export default function EditMotherboard() {
                   onChange={(e) => onInputChange(e)}
                 />
               </div>
-            </label>
+            </Edit.Label>
           </div>
           <div>
             <label htmlFor="RamFreq" className="form-label">
@@ -245,7 +244,7 @@ export default function EditMotherboard() {
             <Buttons.Cancel type="button">Cancel</Buttons.Cancel>
           </Link>
         </div>
-      </Form>
+      </form>
     </Container>
   );
 }

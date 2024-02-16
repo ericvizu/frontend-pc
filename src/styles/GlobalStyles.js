@@ -139,9 +139,21 @@ export const Buttons = {
   `,
 };
 
-export const Form = styled.form.attrs({
-  className: '',
-})`
-  label {
-  }
-`;
+export const Edit = {
+  Card: styled.div.attrs({ className: 'card card-body' })``,
+  Label: styled.label.attrs({
+    className: 'form-label',
+  })`
+    background-color: ${(props) => props.topValue || 'blue'};
+  `,
+  Div: styled.div.attrs({
+    className: 'input-group',
+  })``,
+  Span: styled.span.attrs({ className: 'input-group-text' })``,
+  Input: styled.input.attrs({ className: 'form-control', required: true })``,
+  InputNumber: styled.input.attrs((props) => ({
+    type: props.size,
+    className: 'form-control',
+    required: true,
+  }))``,
+};
