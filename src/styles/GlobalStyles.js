@@ -150,7 +150,11 @@ export const Edit = {
     className: 'input-group',
   })``,
   Span: styled.span.attrs({ className: 'input-group-text' })``,
-  Input: styled.input.attrs({ className: 'form-control', required: true })``,
+  Input: styled.input.attrs((props) => ({
+    className: 'form-control',
+    required: true,
+    name: props.id,
+  }))``,
   InputNumber: styled.input.attrs((props) => ({
     type: props.size,
     className: 'form-control',

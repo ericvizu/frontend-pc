@@ -70,174 +70,148 @@ export default function EditMotherboard() {
         <h5>Name</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="Brand">
+            <Edit.Label htmlFor="brand">
               <Edit.Div>
                 <Edit.Span>Brand</Edit.Span>
                 <Edit.Input
-                  id="Brand"
                   type="text"
-                  placeholder="Brand"
-                  name="brand"
+                  id="brand"
                   value={brand}
+                  placeholder="Brand"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
             </Edit.Label>
           </div>
           <div>
-            <label htmlFor="Name" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">Name</span>
-                <input
-                  id="Name"
-                  className="form-control"
+            <Edit.Label htmlFor="Name">
+              <Edit.Div>
+                <Edit.Span>Name</Edit.Span>
+                <Edit.Input
                   type="text"
-                  required
-                  placeholder="Name"
-                  name="name"
+                  id="Name"
                   value={name}
+                  placeholder="Name"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
         </Edit.Card>
 
         <h5>CPU</h5>
-        <div className="card card-body">
+        <Edit.Card>
           <div>
-            <label htmlFor="Socket" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">Socket</span>
-                <input
-                  id="Socket"
-                  className="form-control"
+            <Edit.Label htmlFor="Socket">
+              <Edit.Div>
+                <Edit.Span>Socket</Edit.Span>
+                <Edit.Input
                   type="text"
-                  required
-                  placeholder="Socket"
-                  name="socket"
+                  id="Socket"
                   value={socket}
+                  placeholder="Socket"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
-        </div>
+        </Edit.Card>
 
         <h5>RAM</h5>
-        <div className="card card-body">
+        <Edit.Card>
           <div>
-            <label htmlFor="RamGen" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">RAM Gen</span>
-                <input
-                  id="RamGen"
-                  className="form-control"
+            <Edit.Label htmlFor="ramGen">
+              <Edit.Div>
+                <Edit.Span>RAM Gen</Edit.Span>
+                <Edit.Input
                   type="text"
-                  required
-                  placeholder="RAM Gen"
-                  name="ramGen"
+                  id="ramGen"
                   value={ramGen}
+                  placeholder="RAM Gen"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
-          </div>
-          <div>
-            <Edit.Label htmlFor="RamSlots" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">RAM Slots</span>
-                <Edit.InputNumber
-                  id="RamSlots"
-                  className="form-control"
-                  // type="number"
-                  size="number"
-                  required
-                  placeholder="RAM Slots"
-                  name="ramSlots"
-                  value={ramSlots}
-                  onChange={(e) => onInputChange(e)}
-                />
-              </div>
+              </Edit.Div>
             </Edit.Label>
           </div>
           <div>
-            <label htmlFor="RamFreq" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">RAM Frequency (MHz)</span>
-                <input
-                  id="RamFreq"
-                  className="form-control"
+            <Edit.Label htmlFor="RamSlots">
+              <Edit.Div>
+                <Edit.Span>RAM Slots</Edit.Span>
+                <Edit.Input
                   type="number"
-                  required
-                  placeholder="RAM Frequency"
-                  name="ramFreq"
-                  value={ramFreq}
+                  id="RamSlots"
+                  value={ramSlots}
+                  placeholder="RAM Slots"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
-        </div>
+          <div>
+            <Edit.Label htmlFor="RamFreq">
+              <Edit.Div>
+                <Edit.Span>RAM Frequency (MHz)</Edit.Span>
+                <Edit.Input
+                  type="number"
+                  id="RamFreq"
+                  value={ramFreq}
+                  placeholder="RAM Frequency"
+                  onChange={(e) => onInputChange(e)}
+                />
+              </Edit.Div>
+            </Edit.Label>
+          </div>
+        </Edit.Card>
 
         <h5>SATA</h5>
-        <div className="card card-body">
+        <Edit.Card>
           <div>
-            <label htmlFor="SataSlots" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">SATA Slots</span>
-                <input
-                  id="SataSlots"
-                  className="form-control"
+            <Edit.Label htmlFor="SataSlots">
+              <Edit.Div>
+                <Edit.Span>SATA Slots</Edit.Span>
+                <Edit.Input
                   type="number"
-                  required
-                  placeholder="SATA Slots"
-                  name="sataSlots"
+                  id="SataSlots"
                   value={sataSlots}
+                  placeholder="SATA Slots"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
-        </div>
+        </Edit.Card>
 
         <h5>M.2</h5>
-        <div className="card card-body">
+        <Edit.Card>
           <div>
-            <label htmlFor="M2Gen4Slots" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">M.2 Gen4 Slots</span>
-                <input
+            <Edit.Label htmlFor="M2Gen4Slots">
+              <Edit.Div>
+                <Edit.Span>M.2 Gen4 Slots</Edit.Span>
+                <Edit.Input
+                  type="number"
                   id="M2Gen4Slots"
-                  className="form-control"
-                  type="number"
-                  required
-                  placeholder="M.2 Gen4 Slots"
-                  name="m2Gen4Slots"
                   value={m2Gen4Slots}
+                  placeholder="M.2 Gen4 Slots"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
           <div>
-            <label htmlFor="M2Gen3Slots" className="form-label">
-              <div className="input-group">
-                <span className="input-group-text">M.2 Gen3 Slots</span>
-                <input
-                  id="M2Gen3Slots"
-                  className="form-control"
+            <Edit.Label htmlFor="M2Gen3Slots">
+              <Edit.Div>
+                <Edit.Span>M.2 Gen3 Slots</Edit.Span>
+                <Edit.Input
                   type="number"
-                  required
-                  placeholder="M.2 Gen3 Slots"
-                  name="m2Gen3Slots"
+                  id="M2Gen3Slots"
                   value={m2Gen3Slots}
+                  placeholder="M.2 Gen3 Slots"
                   onChange={(e) => onInputChange(e)}
                 />
-              </div>
-            </label>
+              </Edit.Div>
+            </Edit.Label>
           </div>
-        </div>
+        </Edit.Card>
         <div>
           <Buttons.Edit type="submit">Submit</Buttons.Edit>
           <Link to="/motherboard">
