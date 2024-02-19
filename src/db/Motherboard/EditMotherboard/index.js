@@ -84,7 +84,7 @@ export default function EditMotherboard() {
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="Name">
+            <Edit.Label htmlFor="name">
               <Edit.Div>
                 <Edit.Span>Name</Edit.Span>
                 <Edit.Input
@@ -102,7 +102,7 @@ export default function EditMotherboard() {
         <h5>CPU</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="Socket">
+            <Edit.Label htmlFor="socket">
               <Edit.Div>
                 <Edit.Span>Socket</Edit.Span>
                 <Edit.Input
@@ -134,7 +134,7 @@ export default function EditMotherboard() {
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="RamSlots">
+            <Edit.Label htmlFor="ramSlots">
               <Edit.Div>
                 <Edit.Span>RAM Slots</Edit.Span>
                 <Edit.Input
@@ -148,7 +148,7 @@ export default function EditMotherboard() {
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="RamFreq">
+            <Edit.Label htmlFor="ramFreq">
               <Edit.Div>
                 <Edit.Span>RAM Frequency (MHz)</Edit.Span>
                 <Edit.Input
@@ -166,7 +166,7 @@ export default function EditMotherboard() {
         <h5>SATA</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="SataSlots">
+            <Edit.Label htmlFor="sataSlots">
               <Edit.Div>
                 <Edit.Span>SATA Slots</Edit.Span>
                 <Edit.Input
@@ -184,7 +184,7 @@ export default function EditMotherboard() {
         <h5>M.2</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="M2Gen4Slots">
+            <Edit.Label htmlFor="m2Gen4Slots">
               <Edit.Div>
                 <Edit.Span>M.2 Gen4 Slots</Edit.Span>
                 <Edit.Input
@@ -198,7 +198,7 @@ export default function EditMotherboard() {
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="M2Gen3Slots">
+            <Edit.Label htmlFor="m2Gen3Slots">
               <Edit.Div>
                 <Edit.Span>M.2 Gen3 Slots</Edit.Span>
                 <Edit.Input

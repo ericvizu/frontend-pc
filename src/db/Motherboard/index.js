@@ -7,6 +7,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
+
+  // For filtering
   const [selectBrandFilter, setSelectBrandFilter] = useState([motherboards]);
   const [selectNameFilter, setSelectNameFilter] = useState([motherboards]);
   const [selectSocketFilter, setSelectSocketFilter] = useState([motherboards]);
@@ -29,6 +31,7 @@ export default function Motherboard() {
     verifyDuplicate(ramSlotsArray, m.ramSlots);
   });
 
+  // Resets all fields to empty strings
   const resetAllFilters = () => {
     setSelectBrandFilter('');
     setSelectNameFilter('');
@@ -75,7 +78,13 @@ export default function Motherboard() {
           <h1>Motherboard</h1>
         </div>
         <div className="col">
-          <Buttons.Reload type="button" onClick={loadMotherboards}>
+          <Buttons.Reload
+            type="button"
+            onClick={() => {
+              loadMotherboards();
+              resetAllFilters();
+            }}
+          >
             Reload
           </Buttons.Reload>
         </div>
@@ -198,8 +207,8 @@ export default function Motherboard() {
             .filter(({ ramGen }) =>
               selectRamGenFilter ? selectRamGenFilter === ramGen : true
             )
-            .filter(({ RamSlots }) =>
-              selectRamSlotsFilter ? selectRamSlotsFilter === RamSlots : true
+            .filter(({ ramSlots }) =>
+              selectRamSlotsFilter ? selectRamSlotsFilter === ramSlots : true
             )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
