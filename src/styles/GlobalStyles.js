@@ -152,6 +152,7 @@ export const Edit = {
   Span: styled.span.attrs({ className: 'input-group-text' })``,
   Input: styled.input.attrs((props) => ({
     className: 'form-control',
+    autoComplete: 'on',
     required: true,
     name: props.id,
   }))``,

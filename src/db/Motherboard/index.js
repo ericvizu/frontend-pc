@@ -208,7 +208,9 @@ export default function Motherboard() {
               selectRamGenFilter ? selectRamGenFilter === ramGen : true
             )
             .filter(({ ramSlots }) =>
-              selectRamSlotsFilter ? selectRamSlotsFilter === ramSlots : true
+              selectRamSlotsFilter
+                ? selectRamSlotsFilter.includes(ramSlots) // Using '===' does not work because ramSlots is an array with numbers [4, 6], where the other arrays have String ['DDR4', 'DDR5']
+                : true
             )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
@@ -242,3 +244,33 @@ export default function Motherboard() {
     </Container>
   );
 }
+
+// .filter(({ brand, name, socket, ramGen, ramSlots }) =>
+//               selectBrandFilter ||
+//               selectNameFilter ||
+//               selectSocketFilter ||
+//               selectRamGenFilter ||
+//               selectRamSlotsFilter
+//                 ? selectBrandFilter === brand ||
+//                   selectNameFilter === name ||
+//                   selectSocketFilter === socket ||
+//                   selectRamGenFilter === ramGen ||
+//                   selectRamSlotsFilter === ramSlots
+//                 : true
+//             )
+
+// .filter(({ brand }) =>
+//               selectBrandFilter ? selectBrandFilter === brand : true
+//             )
+//             .filter(({ name }) =>
+//               selectNameFilter ? selectNameFilter === name : true
+//             )
+//             .filter(({ socket }) =>
+//               selectSocketFilter ? selectSocketFilter === socket : true
+//             )
+//             .filter(({ ramGen }) =>
+//               selectRamGenFilter ? selectRamGenFilter === ramGen : true
+//             )
+//             .filter(({ ramSlots }) =>
+//               selectRamSlotsFilter ? selectRamSlotsFilter === ramSlots : true
+//             )
