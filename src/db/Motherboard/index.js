@@ -9,6 +9,11 @@ export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
   const [selectBrandFilter, setSelectBrandFilter] = useState([motherboards]);
   const [selectNameFilter, setSelectNameFilter] = useState([motherboards]);
+  const [selectSocketFilter, setSelectSocketFilter] = useState([motherboards]);
+  const [selectRamGenFilter, setSelectRamGenFilter] = useState([motherboards]);
+  const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState([
+    motherboards,
+  ]);
 
   const brandArray = [];
   const nameArray = [];
@@ -27,6 +32,9 @@ export default function Motherboard() {
   const resetAllFilters = () => {
     setSelectBrandFilter('');
     setSelectNameFilter('');
+    setSelectSocketFilter('');
+    setSelectRamGenFilter('');
+    setSelectRamSlotsFilter('');
   };
 
   // GET Motherboard from database
@@ -118,8 +126,12 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="Socket">
-                <option> ------------ </option>
+              <Tables.SelectFilter
+                aria-label="Socket"
+                value={selectSocketFilter}
+                onChange={(e) => setSelectSocketFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
                 {socketArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -128,8 +140,12 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="RamGen">
-                <option> ------------ </option>
+              <Tables.SelectFilter
+                aria-label="RamGen"
+                value={selectRamGenFilter}
+                onChange={(e) => setSelectRamGenFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
                 {ramGenArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -138,8 +154,12 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="RamSlots">
-                <option> ------------ </option>
+              <Tables.SelectFilter
+                aria-label="RamSlots"
+                value={selectRamSlotsFilter}
+                onChange={(e) => setSelectRamSlotsFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
                 {ramSlotsArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -155,7 +175,7 @@ export default function Motherboard() {
                     // eslint-disable-next-line no-param-reassign
                     b.selectedIndex = 0;
                   });
-                  // resetAllFilters();
+                  resetAllFilters();
                 }}
               >
                 Reset Filters
@@ -166,9 +186,17 @@ export default function Motherboard() {
         </tbody>
         <tbody>
           {motherboards
-            .filter(({ brand, name }) =>
-              selectBrandFilter || selectNameFilter
-                ? selectBrandFilter === brand || selectNameFilter === name
+            .filter(({ brand, name, socket, ramGen, ramSlots }) =>
+              selectBrandFilter ||
+              selectNameFilter ||
+              selectSocketFilter ||
+              selectRamGenFilter ||
+              selectRamSlotsFilter
+                ? selectBrandFilter === brand ||
+                  selectNameFilter === name ||
+                  selectSocketFilter === socket ||
+                  selectRamGenFilter === ramGen ||
+                  selectRamSlotsFilter === ramSlots
                 : true
             )
             .map((motherboard, index) => (
