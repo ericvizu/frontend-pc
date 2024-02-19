@@ -89,7 +89,7 @@ export default function EditMotherboard() {
                 <Edit.Span>Name</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="Name"
+                  id="name"
                   value={name}
                   placeholder="Name"
                   onChange={(e) => onInputChange(e)}
@@ -107,7 +107,7 @@ export default function EditMotherboard() {
                 <Edit.Span>Socket</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="Socket"
+                  id="socket"
                   value={socket}
                   placeholder="Socket"
                   onChange={(e) => onInputChange(e)}
@@ -139,7 +139,7 @@ export default function EditMotherboard() {
                 <Edit.Span>RAM Slots</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="RamSlots"
+                  id="ramSlots"
                   value={ramSlots}
                   placeholder="RAM Slots"
                   onChange={(e) => onInputChange(e)}
@@ -153,7 +153,7 @@ export default function EditMotherboard() {
                 <Edit.Span>RAM Frequency (MHz)</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="RamFreq"
+                  id="ramFreq"
                   value={ramFreq}
                   placeholder="RAM Frequency"
                   onChange={(e) => onInputChange(e)}
@@ -171,7 +171,7 @@ export default function EditMotherboard() {
                 <Edit.Span>SATA Slots</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="SataSlots"
+                  id="sataSlots"
                   value={sataSlots}
                   placeholder="SATA Slots"
                   onChange={(e) => onInputChange(e)}
@@ -189,7 +189,7 @@ export default function EditMotherboard() {
                 <Edit.Span>M.2 Gen4 Slots</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="M2Gen4Slots"
+                  id="m2Gen4Slots"
                   value={m2Gen4Slots}
                   placeholder="M.2 Gen4 Slots"
                   onChange={(e) => onInputChange(e)}
@@ -203,7 +203,7 @@ export default function EditMotherboard() {
                 <Edit.Span>M.2 Gen3 Slots</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="M2Gen3Slots"
+                  id="m2Gen3Slots"
                   value={m2Gen3Slots}
                   placeholder="M.2 Gen3 Slots"
                   onChange={(e) => onInputChange(e)}
