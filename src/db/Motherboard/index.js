@@ -23,6 +23,10 @@ export default function Motherboard() {
     verifyDuplicate(ramSlotsArray, m.ramSlots);
   });
 
+  const resetAllFilters = () => {
+    setSelectNameFilter('');
+  };
+
   // GET Motherboard from database
   const loadMotherboards = () => {
     loadAll('motherboard').then(async (m) => {
@@ -51,6 +55,7 @@ export default function Motherboard() {
   // Load the page
   useEffect(() => {
     loadMotherboards();
+    resetAllFilters();
   }, []);
 
   return (
@@ -143,10 +148,8 @@ export default function Motherboard() {
                   document.getElementsByName('filterSelect').forEach((b) => {
                     // eslint-disable-next-line no-param-reassign
                     b.selectedIndex = 0;
-
-                    // Add every setSomething('') for the filters
-                    setSelectNameFilter('');
                   });
+                  resetAllFilters();
                 }}
               >
                 Reset Filters
