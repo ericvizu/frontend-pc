@@ -186,18 +186,20 @@ export default function Motherboard() {
         </tbody>
         <tbody>
           {motherboards
-            .filter(({ brand, name, socket, ramGen, ramSlots }) =>
-              selectBrandFilter ||
-              selectNameFilter ||
-              selectSocketFilter ||
-              selectRamGenFilter ||
-              selectRamSlotsFilter
-                ? selectBrandFilter === brand ||
-                  selectNameFilter === name ||
-                  selectSocketFilter === socket ||
-                  selectRamGenFilter === ramGen ||
-                  selectRamSlotsFilter === ramSlots
-                : true
+            .filter(({ brand }) =>
+              selectBrandFilter ? selectBrandFilter === brand : true
+            )
+            .filter(({ name }) =>
+              selectNameFilter ? selectNameFilter === name : true
+            )
+            .filter(({ socket }) =>
+              selectSocketFilter ? selectSocketFilter === socket : true
+            )
+            .filter(({ ramGen }) =>
+              selectRamGenFilter ? selectRamGenFilter === ramGen : true
+            )
+            .filter(({ RamSlots }) =>
+              selectRamSlotsFilter ? selectRamSlotsFilter === RamSlots : true
             )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
