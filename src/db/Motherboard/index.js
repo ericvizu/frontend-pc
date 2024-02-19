@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
+  const [selectBrandFilter, setSelectBrandFilter] = useState([motherboards]);
   const [selectNameFilter, setSelectNameFilter] = useState([motherboards]);
 
   const brandArray = [];
@@ -24,6 +25,7 @@ export default function Motherboard() {
   });
 
   const resetAllFilters = () => {
+    setSelectBrandFilter('');
     setSelectNameFilter('');
   };
 
@@ -88,8 +90,12 @@ export default function Motherboard() {
             {/* eslint-disable jsx-a11y/control-has-associated-label */}
             <td />
             <td>
-              <Tables.SelectFilter aria-label="Brand">
-                <option> ------------ </option>
+              <Tables.SelectFilter
+                aria-label="Brand"
+                value={selectBrandFilter}
+                onChange={(e) => setSelectBrandFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
                 {brandArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -149,7 +155,7 @@ export default function Motherboard() {
                     // eslint-disable-next-line no-param-reassign
                     b.selectedIndex = 0;
                   });
-                  resetAllFilters();
+                  // resetAllFilters();
                 }}
               >
                 Reset Filters
@@ -160,8 +166,10 @@ export default function Motherboard() {
         </tbody>
         <tbody>
           {motherboards
-            .filter(({ name }) =>
-              selectNameFilter ? selectNameFilter === name : true
+            .filter(({ brand, name }) =>
+              selectBrandFilter || selectNameFilter
+                ? selectBrandFilter === brand || selectNameFilter === name
+                : true
             )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
