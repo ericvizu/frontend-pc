@@ -244,33 +244,3 @@ export default function Motherboard() {
     </Container>
   );
 }
-
-// .filter(({ brand, name, socket, ramGen, ramSlots }) =>
-//               selectBrandFilter ||
-//               selectNameFilter ||
-//               selectSocketFilter ||
-//               selectRamGenFilter ||
-//               selectRamSlotsFilter
-//                 ? selectBrandFilter === brand ||
-//                   selectNameFilter === name ||
-//                   selectSocketFilter === socket ||
-//                   selectRamGenFilter === ramGen ||
-//                   selectRamSlotsFilter === ramSlots
-//                 : true
-//             )
-
-// .filter(({ brand }) =>
-//               selectBrandFilter ? selectBrandFilter === brand : true
-//             )
-//             .filter(({ name }) =>
-//               selectNameFilter ? selectNameFilter === name : true
-//             )
-//             .filter(({ socket }) =>
-//               selectSocketFilter ? selectSocketFilter === socket : true
-//             )
-//             .filter(({ ramGen }) =>
-//               selectRamGenFilter ? selectRamGenFilter === ramGen : true
-//             )
-//             .filter(({ ramSlots }) =>
-//               selectRamSlotsFilter ? selectRamSlotsFilter === ramSlots : true
-//             )
