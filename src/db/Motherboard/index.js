@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
+  const [selectNameFilter, setSelectNameFilter] = useState([motherboards]);
 
   const brandArray = [];
   const nameArray = [];
@@ -92,8 +93,12 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter aria-label="Name">
-                <option> ------------ </option>
+              <Tables.SelectFilter
+                aria-label="Name"
+                value={selectNameFilter}
+                onChange={(e) => setSelectNameFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
                 {nameArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
@@ -138,6 +143,9 @@ export default function Motherboard() {
                   document.getElementsByName('filterSelect').forEach((b) => {
                     // eslint-disable-next-line no-param-reassign
                     b.selectedIndex = 0;
+
+                    // Add every setSomething('') for the filters
+                    setSelectNameFilter('');
                   });
                 }}
               >
@@ -148,33 +156,37 @@ export default function Motherboard() {
           </tr>
         </tbody>
         <tbody>
-          {motherboards.map((motherboard, index) => (
-            <tr key={motherboard.id}>
-              <th scope="row">{index + 1}</th>
-              <td>{motherboard.brand}</td>
-              <td>{motherboard.name}</td>
-              <td>{motherboard.socket}</td>
-              <td>{motherboard.ramGen}</td>
-              <td>{motherboard.ramSlots}</td>
-              <td>{motherboard.stock.quantity}</td>
-              <td>
-                <Link to={`/motherboard/view/${motherboard.id}`}>
-                  <Buttons.View type="button">View</Buttons.View>
-                </Link>
-                <Link to={`/motherboard/edit/${motherboard.id}`}>
-                  <Buttons.Edit type="button">Edit</Buttons.Edit>
-                </Link>
-                <Buttons.Delete
-                  type="button"
-                  onClick={() => {
-                    deleteMotherboard(motherboard.id);
-                  }}
-                >
-                  Delete
-                </Buttons.Delete>
-              </td>
-            </tr>
-          ))}
+          {motherboards
+            .filter(({ name }) =>
+              selectNameFilter ? selectNameFilter === name : true
+            )
+            .map((motherboard, index) => (
+              <tr key={motherboard.id}>
+                <th scope="row">{index + 1}</th>
+                <td>{motherboard.brand}</td>
+                <td>{motherboard.name}</td>
+                <td>{motherboard.socket}</td>
+                <td>{motherboard.ramGen}</td>
+                <td>{motherboard.ramSlots}</td>
+                <td>{motherboard.stock.quantity}</td>
+                <td>
+                  <Link to={`/motherboard/view/${motherboard.id}`}>
+                    <Buttons.View type="button">View</Buttons.View>
+                  </Link>
+                  <Link to={`/motherboard/edit/${motherboard.id}`}>
+                    <Buttons.Edit type="button">Edit</Buttons.Edit>
+                  </Link>
+                  <Buttons.Delete
+                    type="button"
+                    onClick={() => {
+                      deleteMotherboard(motherboard.id);
+                    }}
+                  >
+                    Delete
+                  </Buttons.Delete>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </Tables.Inventory>
     </Container>

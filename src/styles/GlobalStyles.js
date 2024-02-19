@@ -144,7 +144,7 @@ export const Edit = {
   Label: styled.label.attrs({
     className: 'form-label',
   })`
-    background-color: ${(props) => props.topValue || 'blue'};
+    // background-color: ${(props) => props.topValue || 'blue'}; // for copying
   `,
   Div: styled.div.attrs({
     className: 'input-group',
