@@ -14,6 +14,7 @@ export default function Motherboard() {
   const [selectSocketFilter, setSelectSocketFilter] = useState();
   const [selectRamGenFilter, setSelectRamGenFilter] = useState();
   const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState();
+  const [searchText, setSearchText] = useState();
 
   const brandArray = [];
   const nameArray = [];
@@ -36,6 +37,7 @@ export default function Motherboard() {
     setSelectSocketFilter('');
     setSelectRamGenFilter('');
     setSelectRamSlotsFilter('');
+    setSearchText('');
   };
 
   // GET Motherboard from database
@@ -75,7 +77,7 @@ export default function Motherboard() {
         <div className="col-md-auto">
           <h1>Motherboard</h1>
         </div>
-        <div className="col">
+        <div className="col-md-auto">
           <Buttons.Reload
             type="button"
             onClick={() => {
@@ -85,6 +87,18 @@ export default function Motherboard() {
           >
             Reload
           </Buttons.Reload>
+        </div>
+        <div className="input-group col">
+          <span className="input-group-text">Search name</span>
+          <input
+            value={searchText}
+            onChange={({ target }) => setSearchText(target.value)}
+            type="text"
+            className="form-control"
+            placeholder="Name"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
         </div>
       </div>
       <Tables.Inventory>
@@ -209,6 +223,9 @@ export default function Motherboard() {
               selectRamSlotsFilter
                 ? selectRamSlotsFilter.includes(ramSlots) // Using '===' does not work because ramSlots is an array with numbers [4, 6], where the other arrays have String ['DDR4', 'DDR5']
                 : true
+            )
+            .filter(({ name }) =>
+              name?.toLowerCase().includes(searchText?.toLowerCase())
             )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
