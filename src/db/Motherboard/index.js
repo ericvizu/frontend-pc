@@ -9,13 +9,11 @@ export default function Motherboard() {
   const [motherboards, setMotherboards] = useState([]);
 
   // For filtering
-  const [selectBrandFilter, setSelectBrandFilter] = useState([motherboards]);
-  const [selectNameFilter, setSelectNameFilter] = useState([motherboards]);
-  const [selectSocketFilter, setSelectSocketFilter] = useState([motherboards]);
-  const [selectRamGenFilter, setSelectRamGenFilter] = useState([motherboards]);
-  const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState([
-    motherboards,
-  ]);
+  const [selectBrandFilter, setSelectBrandFilter] = useState();
+  const [selectNameFilter, setSelectNameFilter] = useState();
+  const [selectSocketFilter, setSelectSocketFilter] = useState();
+  const [selectRamGenFilter, setSelectRamGenFilter] = useState();
+  const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState();
 
   const brandArray = [];
   const nameArray = [];
