@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
-import { Edit } from './styled';
-import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
+import { Container, Tables, Buttons, Search } from '../../styles/GlobalStyles';
 import { loadAll, deleteEntity, verifyDuplicate } from '../functions';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -89,16 +88,16 @@ export default function Motherboard() {
             Reload
           </Buttons.Reload>
         </div>
-        <Edit.Div className="col">
-          <Edit.Span>Search name</Edit.Span>
-          <Edit.Input
+        <Search.Div className="col">
+          <Search.Span>Search name</Search.Span>
+          <Search.Input
             type="text"
             id="searchText"
             value={searchText}
             placeholder="Name"
             onChange={({ target }) => setSearchText(target.value)}
           />
-        </Edit.Div>
+        </Search.Div>
       </div>
       <Tables.Inventory>
         <thead>

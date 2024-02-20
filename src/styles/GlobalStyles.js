@@ -163,3 +163,20 @@ export const Edit = {
     required: true,
   }))``,
 };
+
+export const Search = {
+  Div: styled.div.attrs({
+    className: 'input-group',
+  })``,
+  Span: styled.span.attrs({ className: 'input-group-text' })`
+    height: 70%;
+  `,
+  Input: styled.input.attrs((props) => ({
+    className: 'form-control',
+    autoComplete: 'on',
+    required: true,
+    name: props.id,
+  }))`
+    height: 70%;
+  `,
+};
