@@ -100,6 +100,7 @@ export const Buttons = {
     border: 2px solid black;
     padding: 5px 25px;
     background: black;
+    height: 70%;
   `,
   Edit: styled(GenericButton).attrs({
     className: 'btn-primary',

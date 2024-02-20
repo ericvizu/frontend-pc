@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
+import { Edit } from './styled';
 import { Container, Tables, Buttons } from '../../styles/GlobalStyles';
 import { loadAll, deleteEntity, verifyDuplicate } from '../functions';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -14,7 +15,7 @@ export default function Motherboard() {
   const [selectSocketFilter, setSelectSocketFilter] = useState();
   const [selectRamGenFilter, setSelectRamGenFilter] = useState();
   const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState();
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState('');
 
   const brandArray = [];
   const nameArray = [];
@@ -88,18 +89,16 @@ export default function Motherboard() {
             Reload
           </Buttons.Reload>
         </div>
-        <div className="input-group col">
-          <span className="input-group-text">Search name</span>
-          <input
-            value={searchText}
-            onChange={({ target }) => setSearchText(target.value)}
+        <Edit.Div className="col">
+          <Edit.Span>Search name</Edit.Span>
+          <Edit.Input
             type="text"
-            className="form-control"
+            id="searchText"
+            value={searchText}
             placeholder="Name"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
+            onChange={({ target }) => setSearchText(target.value)}
           />
-        </div>
+        </Edit.Div>
       </div>
       <Tables.Inventory>
         <thead>
