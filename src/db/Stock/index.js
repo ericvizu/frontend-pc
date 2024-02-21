@@ -116,14 +116,12 @@ export default function Stock() {
             {/* eslint-enable jsx-a11y/control-has-associated-label */}
           </tr>
           {stocks
-            .filter(({ name }) =>
-              selectNameFilter ? selectNameFilter === name : true
-            )
-            .filter(({ category }) =>
-              selectCategoryFilter ? selectCategoryFilter === category : true
-            )
-            .filter(({ name }) =>
-              name?.toLowerCase().includes(searchText?.toLowerCase())
+            .filter(
+              ({ name, category }) =>
+                (!selectNameFilter || selectNameFilter === name) &&
+                (!selectCategoryFilter || selectCategoryFilter === category) &&
+                (!searchText ||
+                  name?.toLowerCase().includes(searchText.toLowerCase()))
             )
             .map((stock, index) => (
               <tr key={stock.id}>

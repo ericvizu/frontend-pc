@@ -82,7 +82,6 @@ export default function Motherboard() {
             type="button"
             onClick={() => {
               loadMotherboards();
-              resetAllFilters();
             }}
           >
             Reload
@@ -205,22 +204,16 @@ export default function Motherboard() {
         </tbody>
         <tbody>
           {motherboards
-            .filter(({ brand }) =>
-              selectBrandFilter ? selectBrandFilter === brand : true
-            )
-            .filter(({ name }) =>
-              selectNameFilter ? selectNameFilter === name : true
-            )
-            .filter(({ socket }) =>
-              selectSocketFilter ? selectSocketFilter === socket : true
-            )
-            .filter(({ ramGen }) =>
-              selectRamGenFilter ? selectRamGenFilter === ramGen : true
-            )
-            .filter(({ ramSlots }) =>
-              selectRamSlotsFilter
-                ? selectRamSlotsFilter.includes(ramSlots) // Using '===' does not work because ramSlots is an array with numbers [4, 6], where the other arrays have String ['DDR4', 'DDR5']
-                : true
+            .filter(
+              ({ brand, name, socket, ramGen, ramSlots }) =>
+                (!selectBrandFilter || selectBrandFilter === brand) &&
+                (!selectNameFilter || selectNameFilter === name) &&
+                (!selectSocketFilter || selectSocketFilter === socket) &&
+                (!selectRamGenFilter || selectRamGenFilter === ramGen) &&
+                (!selectRamSlotsFilter ||
+                  selectRamSlotsFilter.includes(ramSlots)) &&
+                (!searchText ||
+                  name?.toLowerCase().includes(searchText.toLowerCase()))
             )
             .filter(({ name }) =>
               name?.toLowerCase().includes(searchText?.toLowerCase())
