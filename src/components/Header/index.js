@@ -1,4 +1,4 @@
-import { FaHome, FaSignInAlt, FaLaptop, FaStore } from 'react-icons/fa';
+import { FaHome, FaLaptop, FaStore, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Nav } from './styled';
 
@@ -14,8 +14,8 @@ export default function Header() {
       <Link to="/stock">
         <FaStore size={30} />
       </Link>
-      <Link to="/teste">
-        <FaSignInAlt size={30} />
+      <Link to="/login">
+        <FaUser size={28} />
       </Link>
     </Nav>
   );
