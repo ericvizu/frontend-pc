@@ -76,7 +76,11 @@ export const Tables = {
     className: 'form-select form-select-sm',
     defaultValue: '------------',
     name: 'filterSelect',
-  })``,
+  })`
+    option.stockCategory {
+      text-transform: uppercase;
+    }
+  `,
 };
 
 const GenericButton = styled.button.attrs({

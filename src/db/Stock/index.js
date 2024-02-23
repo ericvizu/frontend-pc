@@ -93,7 +93,7 @@ export default function Stock() {
               >
                 <option value=""> ------------ </option>
                 {categoryArray.map((e) => (
-                  <option value={e} key={e}>
+                  <option value={e} key={e} className="stockCategory">
                     {e}
                   </option>
                 ))}
