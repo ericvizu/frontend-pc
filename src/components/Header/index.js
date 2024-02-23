@@ -11,6 +11,9 @@ export default function Header() {
       <Link to="/motherboard">
         <FaLaptop size={30} />
       </Link>
+      <Link to="/cpu">
+        <FaLaptop size={30} />
+      </Link>
       <Link to="/stock">
         <FaStore size={30} />
       </Link>

@@ -78,7 +78,7 @@ export const Tables = {
     name: 'filterSelect',
   })`
     option.stockCategory {
-      text-transform: uppercase;
+      text-transform: uppercase; // Prone to change
     }
   `,
 };
