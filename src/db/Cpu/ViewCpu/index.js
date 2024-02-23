@@ -9,6 +9,7 @@ export default function ViewCpu() {
     brand: '',
     name: '',
     socket: '',
+    cores: '',
     threads: '',
     tdp: '',
     stock: '',

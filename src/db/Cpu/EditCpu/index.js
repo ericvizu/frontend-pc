@@ -14,25 +14,13 @@ export default function EditCpu() {
     brand: '',
     name: '',
     socket: '',
-    ramGen: '',
-    ramSlots: '',
-    ramFreq: '',
-    sataSlots: '',
-    m2Gen4Slots: '',
-    m2Gen3Slots: '',
+    cores: '',
+    threads: '',
+    tdp: '',
+    stock: '',
   });
 
-  const {
-    brand,
-    name,
-    socket,
-    ramGen,
-    ramSlots,
-    ramFreq,
-    sataSlots,
-    m2Gen4Slots,
-    m2Gen3Slots,
-  } = cpu;
+  const { brand, name, socket, cores, threads, tdp } = cpu;
 
   // Changes value from where is being written
   const onInputChange = (e) => {
@@ -58,13 +46,13 @@ export default function EditCpu() {
     <Container>
       <div className="row">
         <div className="col-md-auto">
-          <h1> Change Cpu </h1>
+          <h1> Change CPU </h1>
         </div>
       </div>
 
       <form onSubmit={(e) => onSubmit(e)}>
         <h3>
-          Please change the Cpu infos and press Submit, or press Cancel to go
+          Please change the CPU infos and press Submit, or press Cancel to go
           back.
         </h3>
         <h5>Name</h5>
@@ -99,7 +87,7 @@ export default function EditCpu() {
           </div>
         </Edit.Card>
 
-        <h5>CPU</h5>
+        <h5>Socket</h5>
         <Edit.Card>
           <div>
             <Edit.Label htmlFor="socket">
@@ -117,45 +105,31 @@ export default function EditCpu() {
           </div>
         </Edit.Card>
 
-        <h5>RAM</h5>
+        <h5>Core</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="ramGen">
+            <Edit.Label htmlFor="cores">
               <Edit.Div>
-                <Edit.Span>RAM Gen</Edit.Span>
+                <Edit.Span>CPU Cores</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="ramGen"
-                  value={ramGen}
-                  placeholder="RAM Gen"
+                  id="cores"
+                  value={cores}
+                  placeholder="CPU Cores"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="ramSlots">
+            <Edit.Label htmlFor="threads">
               <Edit.Div>
-                <Edit.Span>RAM Slots</Edit.Span>
+                <Edit.Span>CPU Threads</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="ramSlots"
-                  value={ramSlots}
-                  placeholder="RAM Slots"
-                  onChange={(e) => onInputChange(e)}
-                />
-              </Edit.Div>
-            </Edit.Label>
-          </div>
-          <div>
-            <Edit.Label htmlFor="ramFreq">
-              <Edit.Div>
-                <Edit.Span>RAM Frequency (MHz)</Edit.Span>
-                <Edit.Input
-                  type="number"
-                  id="ramFreq"
-                  value={ramFreq}
-                  placeholder="RAM Frequency"
+                  id="threads"
+                  value={threads}
+                  placeholder="CPU Threads"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
@@ -163,49 +137,17 @@ export default function EditCpu() {
           </div>
         </Edit.Card>
 
-        <h5>SATA</h5>
+        <h5>Energy</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="sataSlots">
+            <Edit.Label htmlFor="tdp">
               <Edit.Div>
-                <Edit.Span>SATA Slots</Edit.Span>
+                <Edit.Span>TDP</Edit.Span>
                 <Edit.Input
                   type="number"
-                  id="sataSlots"
-                  value={sataSlots}
-                  placeholder="SATA Slots"
-                  onChange={(e) => onInputChange(e)}
-                />
-              </Edit.Div>
-            </Edit.Label>
-          </div>
-        </Edit.Card>
-
-        <h5>M.2</h5>
-        <Edit.Card>
-          <div>
-            <Edit.Label htmlFor="m2Gen4Slots">
-              <Edit.Div>
-                <Edit.Span>M.2 Gen4 Slots</Edit.Span>
-                <Edit.Input
-                  type="number"
-                  id="m2Gen4Slots"
-                  value={m2Gen4Slots}
-                  placeholder="M.2 Gen4 Slots"
-                  onChange={(e) => onInputChange(e)}
-                />
-              </Edit.Div>
-            </Edit.Label>
-          </div>
-          <div>
-            <Edit.Label htmlFor="m2Gen3Slots">
-              <Edit.Div>
-                <Edit.Span>M.2 Gen3 Slots</Edit.Span>
-                <Edit.Input
-                  type="number"
-                  id="m2Gen3Slots"
-                  value={m2Gen3Slots}
-                  placeholder="M.2 Gen3 Slots"
+                  id="tdp"
+                  value={tdp}
+                  placeholder="TDP"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
