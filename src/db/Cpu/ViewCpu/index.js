@@ -9,12 +9,8 @@ export default function ViewCpu() {
     brand: '',
     name: '',
     socket: '',
-    ramGen: '',
-    ramSlots: '',
-    ramFreq: '',
-    sataSlots: '',
-    m2Gen4Slots: '',
-    m2Gen3Slots: '',
+    threads: '',
+    tdp: '',
     stock: '',
   });
 
@@ -58,28 +54,16 @@ export default function ViewCpu() {
             <th>{cpu.socket}</th>
           </tr>
           <tr>
-            <th>RAM Gen:</th>
-            <th>{cpu.ramGen}</th>
+            <th>Cores:</th>
+            <th>{cpu.cores}</th>
           </tr>
           <tr>
-            <th>RAM Slots:</th>
-            <th>{cpu.ramSlots}</th>
+            <th>Threads:</th>
+            <th>{cpu.threads}</th>
           </tr>
           <tr>
-            <th>RAM Fequency:</th>
-            <th>{cpu.ramFreq} MHz</th>
-          </tr>
-          <tr>
-            <th>Sata Slots:</th>
-            <th>{cpu.sataSlots}</th>
-          </tr>
-          <tr>
-            <th>M.2 Gen4 Slots:</th>
-            <th>{cpu.m2Gen4Slots}</th>
-          </tr>
-          <tr>
-            <th>M.2 Gen3 Slots:</th>
-            <th>{cpu.m2Gen3Slots}</th>
+            <th>TDP:</th>
+            <th>{cpu.tdp} W</th>
           </tr>
         </tbody>
       </Tables.View>

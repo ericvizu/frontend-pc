@@ -31,7 +31,7 @@ function App() {
         />
         <Route exact path="/cpu" element={<Cpu />} />
         <Route exact path="/cpu/edit/:id" element={<EditCpu />} />
-        <Route exact path="/motherboard/view/:id" element={<ViewCpu />} />
+        <Route exact path="/cpu/view/:id" element={<ViewCpu />} />
         <Route exact path="/stock" element={<Stock />} />
       </Routes>
       <GlobalStyles />
