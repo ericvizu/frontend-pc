@@ -11,24 +11,28 @@ export default function Cpu() {
   // For filtering
   const [selectBrandFilter, setSelectBrandFilter] = useState();
   const [selectNameFilter, setSelectNameFilter] = useState();
-  const [selectSocketFilter, setSelectSocketFilter] = useState();
+  const [selectGenFilter, setSelectGenFilter] = useState();
+  const [selectSizeFilter, setSelectSizeFilter] = useState();
   const [searchText, setSearchText] = useState('');
 
   const brandArray = [];
   const nameArray = [];
-  const socketArray = [];
+  const genArray = [];
+  const sizeArray = [];
 
   cpus.forEach((m) => {
     verifyDuplicate(brandArray, m.brand);
     verifyDuplicate(nameArray, m.name);
-    verifyDuplicate(socketArray, m.socket);
+    verifyDuplicate(genArray, m.socket);
+    verifyDuplicate(sizeArray, m.ramGen);
   });
 
   // Resets all fields to empty strings
   const resetAllFilters = () => {
     setSelectBrandFilter('');
     setSelectNameFilter('');
-    setSelectSocketFilter('');
+    setSelectGenFilter('');
+    setSelectSizeFilter('');
     setSearchText('');
   };
 
@@ -96,7 +100,8 @@ export default function Cpu() {
             <th scope="col">#</th>
             <th scope="col">Brand</th>
             <th scope="col">Name</th>
-            <th scope="col">Socket</th>
+            <th scope="col">Gen</th>
+            <th scope="col">Size</th>
             <th scope="col">Stock</th>
             <th scope="col">Actions</th>
           </tr>
@@ -136,11 +141,25 @@ export default function Cpu() {
             <td>
               <Tables.SelectFilter
                 aria-label="Gen"
-                value={selectSocketFilter}
-                onChange={(e) => setSelectSocketFilter(e.currentTarget.value)}
+                value={selectGenFilter}
+                onChange={(e) => setSelectGenFilter(e.currentTarget.value)}
               >
                 <option value=""> ------------ </option>
-                {socketArray.map((e) => (
+                {genArray.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </Tables.SelectFilter>
+            </td>
+            <td>
+              <Tables.SelectFilter
+                aria-label="Size"
+                value={selectSizeFilter}
+                onChange={(e) => setSelectSizeFilter(e.currentTarget.value)}
+              >
+                <option value=""> ------------ </option>
+                {sizeArray.map((e) => (
                   <option value={e} key={e}>
                     {e}
                   </option>
@@ -167,10 +186,11 @@ export default function Cpu() {
         <tbody>
           {cpus
             .filter(
-              ({ brand, name, socket }) =>
+              ({ brand, name, socket, ramGen, ramSlots }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
                 (!selectNameFilter || selectNameFilter === name) &&
-                (!selectSocketFilter || selectSocketFilter === socket) &&
+                (!selectGenFilter || selectGenFilter === socket) &&
+                (!selectSizeFilter || selectSizeFilter === ramGen) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )
@@ -182,7 +202,8 @@ export default function Cpu() {
                 <th scope="row">{index + 1}</th>
                 <td>{cpu.brand}</td>
                 <td>{cpu.name}</td>
-                <td>{cpu.socket}</td>
+                <td>{cpu.gen}</td>
+                <td>{cpu.size}</td>
                 <td>{cpu.stock.quantity}</td>
                 <td>
                   <Link to={`/cpu/view/${cpu.id}`}>
