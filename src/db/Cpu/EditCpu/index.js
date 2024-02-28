@@ -142,7 +142,7 @@ export default function EditCpu() {
           <div>
             <Edit.Label htmlFor="tdp">
               <Edit.Div>
-                <Edit.Span>TDP</Edit.Span>
+                <Edit.Span>TDP (W)</Edit.Span>
                 <Edit.Input
                   type="number"
                   id="tdp"

@@ -3,55 +3,57 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Buttons, Edit } from '../../../styles/GlobalStyles';
 import { loadEntity, updateEntity } from '../../functions';
 
-export default function EditRam() {
+export default function EditGpu() {
   const navigate = useNavigate();
 
   // Get ID from URL
   const { id } = useParams();
 
   // Empty values to be updated after GET
-  const [ram, setRams] = useState({
+  const [gpu, setGpus] = useState({
     brand: '',
     name: '',
-    gen: '',
-    size: '',
-    freq: '',
-    latency: '',
+    baseClock: '',
+    boostClock: '',
+    vramSize: '',
+    vramGen: '',
+    tdp: '',
   });
 
-  const { brand, name, gen, size, freq, latency } = ram;
+  const { brand, name, baseClock, boostClock, vramSize, vramGen, tdp, gen } =
+    gpu;
 
   // Changes value from where is being written
   const onInputChange = (e) => {
-    setRams({ ...ram, [e.target.name]: e.target.value });
+    setGpus({ ...gpu, [e.target.name]: e.target.value });
   };
 
-  // PUT Ram with new values where the old one was
+  // PUT Gpu with new values where the old one was
   const onSubmit = async (e) => {
     e.preventDefault();
-    updateEntity('ram', id, ram);
-    navigate('/ram');
+    updateEntity('gpu', id, gpu);
+    navigate('/gpu');
   };
 
-  // GET Rams and load the page
+  // GET Gpus and load the page
   useEffect(() => {
-    const loadRams = () => {
-      loadEntity('ram', id).then((m) => setRams(m));
+    const loadGpus = () => {
+      loadEntity('gpu', id).then((m) => setGpus(m));
     };
-    loadRams();
+    loadGpus();
   }, [id]);
 
   return (
     <Container>
       <div className="row">
         <div className="col-md-auto">
-          <h1> Change RAM </h1>
+          <h1> Change GPU </h1>
         </div>
       </div>
 
       <form onSubmit={(e) => onSubmit(e)}>
         <h3>
-          Please change the Ram infos and press Submit, or press Cancel to go
+          Please change the Gpu infos and press Submit, or press Cancel to go
           back.
         </h3>
         <h5>Name</h5>
@@ -86,59 +88,81 @@ export default function EditRam() {
           </div>
         </Edit.Card>
 
-        <h5>Specifications</h5>
+        <h5>Clock</h5>
         <Edit.Card>
           <div>
-            <Edit.Label htmlFor="gen">
+            <Edit.Label htmlFor="baseClock">
               <Edit.Div>
-                <Edit.Span>Generation</Edit.Span>
+                <Edit.Span>Base Clock (MHz)</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="gen"
-                  value={gen}
-                  placeholder="Generation"
+                  id="baseClock"
+                  value={baseClock}
+                  placeholder="Base Clock"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="size">
+            <Edit.Label htmlFor="boostClock">
               <Edit.Div>
-                <Edit.Span>Size (gb)</Edit.Span>
+                <Edit.Span>Boost Clock (MHz)</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="size"
-                  value={size}
-                  placeholder="Size"
+                  id="boostClock"
+                  value={boostClock}
+                  placeholder="Boost Clock"
+                  onChange={(e) => onInputChange(e)}
+                />
+              </Edit.Div>
+            </Edit.Label>
+          </div>
+        </Edit.Card>
+
+        <h5>VRAM</h5>
+        <Edit.Card>
+          <div>
+            <Edit.Label htmlFor="vramSize">
+              <Edit.Div>
+                <Edit.Span>VRAM Size (gb)</Edit.Span>
+                <Edit.Input
+                  type="text"
+                  id="vramSize"
+                  value={vramSize}
+                  placeholder="VRAM Size"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
             </Edit.Label>
           </div>
           <div>
-            <Edit.Label htmlFor="freq">
+            <Edit.Label htmlFor="vramGen">
               <Edit.Div>
-                <Edit.Span>Frequency (MHz)</Edit.Span>
+                <Edit.Span>VRAM Generation</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="freq"
-                  value={freq}
-                  placeholder="Frequency"
+                  id="vramGen"
+                  value={vramGen}
+                  placeholder="VRAM Generation"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
             </Edit.Label>
           </div>
+        </Edit.Card>
+
+        <h5>Energy</h5>
+        <Edit.Card>
           <div>
-            <Edit.Label htmlFor="latency">
+            <Edit.Label htmlFor="tdp">
               <Edit.Div>
-                <Edit.Span>Latency</Edit.Span>
+                <Edit.Span>TDP (W)</Edit.Span>
                 <Edit.Input
                   type="text"
-                  id="latency"
-                  value={latency}
-                  placeholder="Frequency"
+                  id="tdp"
+                  value={tdp}
+                  placeholder="TDP"
                   onChange={(e) => onInputChange(e)}
                 />
               </Edit.Div>
