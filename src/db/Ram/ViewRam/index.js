@@ -3,9 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
 import { loadEntity } from '../../functions';
 
-export default function ViewCpu() {
-  // Empty values so that loadCpus function has time to update "cpu.stock.quantity"
-  const [cpu, setCpus] = useState({
+export default function ViewRam() {
+  // Empty values so that loadRams function has time to update "ram.stock.quantity"
+  const [ram, setRams] = useState({
     brand: '',
     name: '',
     socket: '',
@@ -21,12 +21,12 @@ export default function ViewCpu() {
   // Get ID from URL
   const { id } = useParams();
 
-  // GET Cpu from database and load the page
+  // GET Ram from database and load the page
   useEffect(() => {
-    const loadCpus = () => {
-      loadEntity('cpu', id).then((m) => setCpus(m));
+    const loadRams = () => {
+      loadEntity('ram', id).then((m) => setRams(m));
     };
-    loadCpus();
+    loadRams();
   }, [id]);
 
   return (
@@ -34,11 +34,11 @@ export default function ViewCpu() {
       <div className="row">
         <div className="col-md-auto">
           <h1>
-            {cpu.brand} {cpu.name} (id: {cpu.id}) (stock: {cpu.stock.quantity})
+            {ram.brand} {ram.name} (id: {ram.id}) (stock: {ram.stock.quantity})
           </h1>
         </div>
         <div className="col">
-          <Link to="/cpu">
+          <Link to="/ram">
             <Buttons.Cancel type="button">Return</Buttons.Cancel>
           </Link>
         </div>
@@ -47,39 +47,27 @@ export default function ViewCpu() {
         <tbody>
           <tr>
             <th>Brand:</th>
-            <th>{cpu.brand}</th>
+            <th>{ram.brand}</th>
           </tr>
           <tr>
             <th>Name:</th>
-            <th>{cpu.name}</th>
+            <th>{ram.name}</th>
           </tr>
           <tr>
             <th>Socket:</th>
-            <th>{cpu.socket}</th>
+            <th>{ram.gen}</th>
           </tr>
           <tr>
             <th>RAM Gen:</th>
-            <th>{cpu.ramGen}</th>
+            <th>{ram.size}</th>
           </tr>
           <tr>
             <th>RAM Slots:</th>
-            <th>{cpu.ramSlots}</th>
+            <th>{ram.freq}</th>
           </tr>
           <tr>
             <th>RAM Fequency:</th>
-            <th>{cpu.ramFreq} MHz</th>
-          </tr>
-          <tr>
-            <th>Sata Slots:</th>
-            <th>{cpu.sataSlots}</th>
-          </tr>
-          <tr>
-            <th>M.2 Gen4 Slots:</th>
-            <th>{cpu.m2Gen4Slots}</th>
-          </tr>
-          <tr>
-            <th>M.2 Gen3 Slots:</th>
-            <th>{cpu.m2Gen3Slots}</th>
+            <th>{ram.latency} MHz</th>
           </tr>
         </tbody>
       </Tables.View>

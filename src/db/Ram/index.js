@@ -5,8 +5,8 @@ import { Container, Tables, Buttons, Search } from '../../styles/GlobalStyles';
 import { loadAll, deleteEntity, verifyDuplicate } from '../functions';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-export default function Cpu() {
-  const [cpus, setCpus] = useState([]);
+export default function Ram() {
+  const [rams, setRams] = useState([]);
 
   // For filtering
   const [selectBrandFilter, setSelectBrandFilter] = useState();
@@ -20,11 +20,11 @@ export default function Cpu() {
   const genArray = [];
   const sizeArray = [];
 
-  cpus.forEach((m) => {
+  rams.forEach((m) => {
     verifyDuplicate(brandArray, m.brand);
     verifyDuplicate(nameArray, m.name);
-    verifyDuplicate(genArray, m.socket);
-    verifyDuplicate(sizeArray, m.ramGen);
+    verifyDuplicate(genArray, m.gen);
+    verifyDuplicate(sizeArray, m.size);
   });
 
   // Resets all fields to empty strings
@@ -36,23 +36,23 @@ export default function Cpu() {
     setSearchText('');
   };
 
-  // GET Cpu from database
-  const loadCpus = () => {
+  // GET Ram from database
+  const loadRams = () => {
     loadAll('ram').then(async (m) => {
-      setCpus(m);
+      setRams(m);
     });
   };
 
-  // DELETE Cpu from database and updates the page
+  // DELETE Ram from database and updates the page
   // Refactor if possible
-  const deleteCpu = (id) => {
+  const deleteRam = (id) => {
     confirmAlert({
       title: 'Confirm delete',
       message: 'Are you sure about this?',
       buttons: [
         {
           label: 'Yes',
-          onClick: () => deleteEntity('cpu', id).then(loadCpus),
+          onClick: () => deleteEntity('ram', id).then(loadRams),
         },
         {
           label: 'No',
@@ -63,7 +63,7 @@ export default function Cpu() {
 
   // Load the page
   useEffect(() => {
-    loadCpus();
+    loadRams();
     resetAllFilters();
   }, []);
 
@@ -77,7 +77,7 @@ export default function Cpu() {
           <Buttons.Reload
             type="button"
             onClick={() => {
-              loadCpus();
+              loadRams();
             }}
           >
             Reload
@@ -171,7 +171,7 @@ export default function Cpu() {
           </tr>
         </tbody>
         <tbody>
-          {cpus
+          {rams
             .filter(
               ({ brand, name, gen, size }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
@@ -181,25 +181,25 @@ export default function Cpu() {
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )
-            .map((cpu, index) => (
-              <tr key={cpu.id}>
+            .map((ram, index) => (
+              <tr key={ram.id}>
                 <th scope="row">{index + 1}</th>
-                <td>{cpu.brand}</td>
-                <td>{cpu.name}</td>
-                <td>{cpu.gen}</td>
-                <td>{cpu.size}</td>
-                <td>{cpu.stock.quantity}</td>
+                <td>{ram.brand}</td>
+                <td>{ram.name}</td>
+                <td>{ram.gen}</td>
+                <td>{ram.size}</td>
+                <td>{ram.stock.quantity}</td>
                 <td>
-                  <Link to={`/cpu/view/${cpu.id}`}>
+                  <Link to={`/ram/view/${ram.id}`}>
                     <Buttons.View type="button">View</Buttons.View>
                   </Link>
-                  <Link to={`/cpu/edit/${cpu.id}`}>
+                  <Link to={`/ram/edit/${ram.id}`}>
                     <Buttons.Edit type="button">Edit</Buttons.Edit>
                   </Link>
                   <Buttons.Delete
                     type="button"
                     onClick={() => {
-                      deleteCpu(cpu.id);
+                      deleteRam(ram.id);
                     }}
                   >
                     Delete
