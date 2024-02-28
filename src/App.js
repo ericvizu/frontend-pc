@@ -17,22 +17,14 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/motherboard" element={<Motherboard />} />
-        <Route
-          exact
-          path="/motherboard/edit/:id"
-          element={<EditMotherboard />}
-        />
-        <Route
-          exact
-          path="/motherboard/view/:id"
-          element={<ViewMotherboard />}
-        />
-        <Route exact path="/cpu" element={<Cpu />} />
-        <Route exact path="/cpu/edit/:id" element={<EditCpu />} />
-        <Route exact path="/cpu/view/:id" element={<ViewCpu />} />
-        <Route exact path="/stock" element={<Stock />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/motherboard" element={<Motherboard />} />
+        <Route path="/motherboard/edit/:id" element={<EditMotherboard />} />
+        <Route path="/motherboard/view/:id" element={<ViewMotherboard />} />
+        <Route path="/cpu" element={<Cpu />} />
+        <Route path="/cpu/edit/:id" element={<EditCpu />} />
+        <Route path="/cpu/view/:id" element={<ViewCpu />} />
+        <Route path="/stock" element={<Stock />} />
       </Routes>
       <GlobalStyles />
     </Router>
