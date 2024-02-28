@@ -8,13 +8,10 @@ export default function ViewRam() {
   const [ram, setRams] = useState({
     brand: '',
     name: '',
-    socket: '',
-    ramGen: '',
-    ramSlots: '',
-    ramFreq: '',
-    sataSlots: '',
-    m2Gen4Slots: '',
-    m2Gen3Slots: '',
+    gen: '',
+    size: '',
+    freq: '',
+    latency: '',
     stock: '',
   });
 
@@ -54,20 +51,20 @@ export default function ViewRam() {
             <th>{ram.name}</th>
           </tr>
           <tr>
-            <th>Socket:</th>
+            <th>Generation:</th>
             <th>{ram.gen}</th>
           </tr>
           <tr>
-            <th>RAM Gen:</th>
-            <th>{ram.size}</th>
+            <th>Size:</th>
+            <th>{ram.size} gb</th>
           </tr>
           <tr>
-            <th>RAM Slots:</th>
-            <th>{ram.freq}</th>
+            <th>Frequency:</th>
+            <th>{ram.freq} MHz</th>
           </tr>
           <tr>
-            <th>RAM Fequency:</th>
-            <th>{ram.latency} MHz</th>
+            <th>Latency:</th>
+            <th>{ram.latency}</th>
           </tr>
         </tbody>
       </Tables.View>
