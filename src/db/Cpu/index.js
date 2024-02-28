@@ -10,7 +10,6 @@ export default function Cpu() {
 
   // For filtering
   const [selectBrandFilter, setSelectBrandFilter] = useState();
-  const [selectNameFilter, setSelectNameFilter] = useState();
   const [selectSocketFilter, setSelectSocketFilter] = useState();
   const [searchText, setSearchText] = useState('');
 
@@ -27,7 +26,6 @@ export default function Cpu() {
   // Resets all fields to empty strings
   const resetAllFilters = () => {
     setSelectBrandFilter('');
-    setSelectNameFilter('');
     setSelectSocketFilter('');
     setSearchText('');
   };
@@ -79,16 +77,6 @@ export default function Cpu() {
             Reload
           </Buttons.Reload>
         </div>
-        <Search.Div className="col">
-          <Search.Span>Search name</Search.Span>
-          <Search.Input
-            type="text"
-            id="searchText"
-            value={searchText}
-            placeholder="Name"
-            onChange={({ target }) => setSearchText(target.value)}
-          />
-        </Search.Div>
       </div>
       <Tables.Inventory>
         <thead>
@@ -120,18 +108,15 @@ export default function Cpu() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter
-                aria-label="Name"
-                value={selectNameFilter}
-                onChange={(e) => setSelectNameFilter(e.currentTarget.value)}
-              >
-                <option value=""> ------------ </option>
-                {nameArray.map((e) => (
-                  <option value={e} key={e}>
-                    {e}
-                  </option>
-                ))}
-              </Tables.SelectFilter>
+              <Search.Div className="col">
+                <Search.Input
+                  type="text"
+                  id="searchText"
+                  value={searchText}
+                  placeholder="Name"
+                  onChange={({ target }) => setSearchText(target.value)}
+                />
+              </Search.Div>
             </td>
             <td>
               <Tables.SelectFilter
@@ -169,7 +154,6 @@ export default function Cpu() {
             .filter(
               ({ brand, name, socket }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
-                (!selectNameFilter || selectNameFilter === name) &&
                 (!selectSocketFilter || selectSocketFilter === socket) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))

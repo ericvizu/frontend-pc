@@ -10,7 +10,6 @@ export default function Motherboard() {
 
   // For filtering
   const [selectBrandFilter, setSelectBrandFilter] = useState();
-  const [selectNameFilter, setSelectNameFilter] = useState();
   const [selectSocketFilter, setSelectSocketFilter] = useState();
   const [selectRamGenFilter, setSelectRamGenFilter] = useState();
   const [selectRamSlotsFilter, setSelectRamSlotsFilter] = useState();
@@ -33,7 +32,6 @@ export default function Motherboard() {
   // Resets all fields to empty strings
   const resetAllFilters = () => {
     setSelectBrandFilter('');
-    setSelectNameFilter('');
     setSelectSocketFilter('');
     setSelectRamGenFilter('');
     setSelectRamSlotsFilter('');
@@ -87,16 +85,6 @@ export default function Motherboard() {
             Reload
           </Buttons.Reload>
         </div>
-        <Search.Div className="col">
-          <Search.Span>Search name</Search.Span>
-          <Search.Input
-            type="text"
-            id="searchText"
-            value={searchText}
-            placeholder="Name"
-            onChange={({ target }) => setSearchText(target.value)}
-          />
-        </Search.Div>
       </div>
       <Tables.Inventory>
         <thead>
@@ -130,18 +118,15 @@ export default function Motherboard() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter
-                aria-label="Name"
-                value={selectNameFilter}
-                onChange={(e) => setSelectNameFilter(e.currentTarget.value)}
-              >
-                <option value=""> ------------ </option>
-                {nameArray.map((e) => (
-                  <option value={e} key={e}>
-                    {e}
-                  </option>
-                ))}
-              </Tables.SelectFilter>
+              <Search.Div className="col">
+                <Search.Input
+                  type="text"
+                  id="searchText"
+                  value={searchText}
+                  placeholder="Name"
+                  onChange={({ target }) => setSearchText(target.value)}
+                />
+              </Search.Div>
             </td>
             <td>
               <Tables.SelectFilter
@@ -207,7 +192,6 @@ export default function Motherboard() {
             .filter(
               ({ brand, name, socket, ramGen, ramSlots }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
-                (!selectNameFilter || selectNameFilter === name) &&
                 (!selectSocketFilter || selectSocketFilter === socket) &&
                 (!selectRamGenFilter || selectRamGenFilter === ramGen) &&
                 (!selectRamSlotsFilter ||

@@ -6,7 +6,6 @@ import { verifyDuplicate } from '../functions';
 
 export default function Stock() {
   const [stocks, setStocks] = useState([]);
-  const [selectNameFilter, setSelectNameFilter] = useState();
   const [selectCategoryFilter, setSelectCategoryFilter] = useState();
   const [searchText, setSearchText] = useState('');
 
@@ -20,7 +19,6 @@ export default function Stock() {
 
   // Resets all fields to empty strings
   const resetAllFilters = () => {
-    setSelectNameFilter('');
     setSelectCategoryFilter('');
     setSearchText('');
   };
@@ -46,16 +44,6 @@ export default function Stock() {
             Reload
           </Buttons.Reload>
         </div>
-        <Search.Div className="col">
-          <Search.Span>Search name</Search.Span>
-          <Search.Input
-            type="text"
-            id="searchText"
-            value={searchText}
-            placeholder="Name"
-            onChange={({ target }) => setSearchText(target.value)}
-          />
-        </Search.Div>
       </div>
       <Tables.Inventory>
         <thead>
@@ -72,24 +60,22 @@ export default function Stock() {
             {/* eslint-disable jsx-a11y/control-has-associated-label */}
             <td />
             <td>
-              <Tables.SelectFilter
-                aria-label="Name"
-                value={selectNameFilter}
-                onChange={(e) => setSelectNameFilter(e.currentTarget.value)}
-              >
-                <option value=""> ------------ </option>
-                {nameArray.map((e) => (
-                  <option value={e} key={e}>
-                    {e}
-                  </option>
-                ))}
-              </Tables.SelectFilter>
+              <Search.Div className="col">
+                <Search.Input
+                  type="text"
+                  id="searchText"
+                  value={searchText}
+                  placeholder="Name"
+                  onChange={({ target }) => setSearchText(target.value)}
+                />
+              </Search.Div>
             </td>
             <td>
               <Tables.SelectFilter
                 aria-label="Category"
                 value={selectCategoryFilter}
                 onChange={(e) => setSelectCategoryFilter(e.currentTarget.value)}
+                className="stockCategory"
               >
                 <option value=""> ------------ </option>
                 {categoryArray.map((e) => (
@@ -118,7 +104,6 @@ export default function Stock() {
           {stocks
             .filter(
               ({ name, category }) =>
-                (!selectNameFilter || selectNameFilter === name) &&
                 (!selectCategoryFilter || selectCategoryFilter === category) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
