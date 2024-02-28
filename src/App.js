@@ -11,6 +11,9 @@ import ViewCpu from './db/Cpu/ViewCpu';
 import Ram from './db/Ram';
 import EditRam from './db/Ram/EditRam';
 import ViewRam from './db/Ram/ViewRam';
+import Gpu from './db/Gpu';
+import EditGpu from './db/Gpu/EditGpu';
+import ViewGpu from './db/Gpu/ViewGpu';
 import Stock from './db/Stock';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
@@ -30,6 +33,9 @@ function App() {
         <Route path="/ram" element={<Ram />} />
         <Route path="/ram/edit/:id" element={<EditRam />} />
         <Route path="/ram/view/:id" element={<ViewRam />} />
+        <Route path="/gpu" element={<Gpu />} />
+        <Route path="/gpu/edit/:id" element={<EditGpu />} />
+        <Route path="/gpu/view/:id" element={<ViewGpu />} />
         <Route path="/stock" element={<Stock />} />
       </Routes>
       <GlobalStyles />
