@@ -158,7 +158,8 @@ export default function Gpu() {
               ({ brand, name, vramSize }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
                 (!selectNameFilter || selectNameFilter === name) &&
-                (!selectVramSizeFilter || selectVramSizeFilter === vramSize) &&
+                (!selectVramSizeFilter ||
+                  selectVramSizeFilter.includes(vramSize)) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )

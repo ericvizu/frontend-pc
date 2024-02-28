@@ -177,7 +177,7 @@ export default function Ram() {
                 (!selectBrandFilter || selectBrandFilter === brand) &&
                 (!selectNameFilter || selectNameFilter === name) &&
                 (!selectGenFilter || selectGenFilter === gen) &&
-                (!selectSizeFilter || selectSizeFilter === size) &&
+                (!selectSizeFilter || selectSizeFilter.includes(size)) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )
