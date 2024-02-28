@@ -107,7 +107,7 @@ export default function EditRam() {
               <Edit.Div>
                 <Edit.Span>Size (gb)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="size"
                   value={size}
                   placeholder="Size"
@@ -121,7 +121,7 @@ export default function EditRam() {
               <Edit.Div>
                 <Edit.Span>Frequency (MHz)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="freq"
                   value={freq}
                   placeholder="Frequency"

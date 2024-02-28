@@ -20,8 +20,7 @@ export default function EditGpu() {
     tdp: '',
   });
 
-  const { brand, name, baseClock, boostClock, vramSize, vramGen, tdp, gen } =
-    gpu;
+  const { brand, name, baseClock, boostClock, vramSize, vramGen, tdp } = gpu;
 
   // Changes value from where is being written
   const onInputChange = (e) => {
@@ -95,7 +94,7 @@ export default function EditGpu() {
               <Edit.Div>
                 <Edit.Span>Base Clock (MHz)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="baseClock"
                   value={baseClock}
                   placeholder="Base Clock"
@@ -109,7 +108,7 @@ export default function EditGpu() {
               <Edit.Div>
                 <Edit.Span>Boost Clock (MHz)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="boostClock"
                   value={boostClock}
                   placeholder="Boost Clock"
@@ -127,7 +126,7 @@ export default function EditGpu() {
               <Edit.Div>
                 <Edit.Span>VRAM Size (gb)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="vramSize"
                   value={vramSize}
                   placeholder="VRAM Size"
@@ -159,7 +158,7 @@ export default function EditGpu() {
               <Edit.Div>
                 <Edit.Span>TDP (W)</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="tdp"
                   value={tdp}
                   placeholder="TDP"

@@ -112,7 +112,7 @@ export default function EditCpu() {
               <Edit.Div>
                 <Edit.Span>CPU Cores</Edit.Span>
                 <Edit.Input
-                  type="text"
+                  type="number"
                   id="cores"
                   value={cores}
                   placeholder="CPU Cores"
