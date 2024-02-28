@@ -214,9 +214,9 @@ export default function EditMotherboard() {
         </Edit.Card>
         <div>
           <Buttons.Edit type="submit">Submit</Buttons.Edit>
-          <Link to="/motherboard">
-            <Buttons.Cancel type="button">Cancel</Buttons.Cancel>
-          </Link>
+          <Buttons.Cancel type="button" onClick={() => navigate(-1)}>
+            Cancel
+          </Buttons.Cancel>
         </div>
       </form>
     </Container>

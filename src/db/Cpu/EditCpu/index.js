@@ -156,9 +156,9 @@ export default function EditCpu() {
         </Edit.Card>
         <div>
           <Buttons.Edit type="submit">Submit</Buttons.Edit>
-          <Link to="/cpu">
-            <Buttons.Cancel type="button">Cancel</Buttons.Cancel>
-          </Link>
+          <Buttons.Cancel type="button" onClick={() => navigate(-1)}>
+            Cancel
+          </Buttons.Cancel>
         </div>
       </form>
     </Container>

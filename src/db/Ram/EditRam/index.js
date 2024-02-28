@@ -45,7 +45,7 @@ export default function EditRam() {
     <Container>
       <div className="row">
         <div className="col-md-auto">
-          <h1> Change Ram </h1>
+          <h1> Change RAM </h1>
         </div>
       </div>
 
