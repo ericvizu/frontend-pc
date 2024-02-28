@@ -158,9 +158,6 @@ export default function Cpu() {
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )
-            .filter(({ name }) =>
-              name?.toLowerCase().includes(searchText?.toLowerCase())
-            )
             .map((cpu, index) => (
               <tr key={cpu.id}>
                 <th scope="row">{index + 1}</th>

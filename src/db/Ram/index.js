@@ -38,7 +38,7 @@ export default function Cpu() {
 
   // GET Cpu from database
   const loadCpus = () => {
-    loadAll('cpu').then(async (m) => {
+    loadAll('ram').then(async (m) => {
       setCpus(m);
     });
   };
@@ -71,7 +71,7 @@ export default function Cpu() {
     <Container>
       <div className="row">
         <div className="col-md-auto">
-          <h1>CPU</h1>
+          <h1>RAM</h1>
         </div>
         <div className="col-md-auto">
           <Buttons.Reload
@@ -83,16 +83,6 @@ export default function Cpu() {
             Reload
           </Buttons.Reload>
         </div>
-        <Search.Div className="col">
-          <Search.Span>Search name</Search.Span>
-          <Search.Input
-            type="text"
-            id="searchText"
-            value={searchText}
-            placeholder="Name"
-            onChange={({ target }) => setSearchText(target.value)}
-          />
-        </Search.Div>
       </div>
       <Tables.Inventory>
         <thead>
@@ -125,18 +115,15 @@ export default function Cpu() {
               </Tables.SelectFilter>
             </td>
             <td>
-              <Tables.SelectFilter
-                aria-label="Name"
-                value={selectNameFilter}
-                onChange={(e) => setSelectNameFilter(e.currentTarget.value)}
-              >
-                <option value=""> ------------ </option>
-                {nameArray.map((e) => (
-                  <option value={e} key={e}>
-                    {e}
-                  </option>
-                ))}
-              </Tables.SelectFilter>
+              <Search.Div className="col">
+                <Search.Input
+                  type="text"
+                  id="searchText"
+                  value={searchText}
+                  placeholder="Name"
+                  onChange={({ target }) => setSearchText(target.value)}
+                />
+              </Search.Div>
             </td>
             <td>
               <Tables.SelectFilter
@@ -186,16 +173,13 @@ export default function Cpu() {
         <tbody>
           {cpus
             .filter(
-              ({ brand, name, socket, ramGen, ramSlots }) =>
+              ({ brand, name, gen, size }) =>
                 (!selectBrandFilter || selectBrandFilter === brand) &&
                 (!selectNameFilter || selectNameFilter === name) &&
-                (!selectGenFilter || selectGenFilter === socket) &&
-                (!selectSizeFilter || selectSizeFilter === ramGen) &&
+                (!selectGenFilter || selectGenFilter === gen) &&
+                (!selectSizeFilter || selectSizeFilter === size) &&
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
-            )
-            .filter(({ name }) =>
-              name?.toLowerCase().includes(searchText?.toLowerCase())
             )
             .map((cpu, index) => (
               <tr key={cpu.id}>

@@ -199,9 +199,6 @@ export default function Motherboard() {
                 (!searchText ||
                   name?.toLowerCase().includes(searchText.toLowerCase()))
             )
-            .filter(({ name }) =>
-              name?.toLowerCase().includes(searchText?.toLowerCase())
-            )
             .map((motherboard, index) => (
               <tr key={motherboard.id}>
                 <th scope="row">{index + 1}</th>
