@@ -115,6 +115,9 @@ export default function Stock() {
                 <td className="uppercase">{stock.category}</td>
                 <td>{stock.quantity}</td>
                 <td>
+                  <Link to={`/${stock.category}/view/${stock.id}`}>
+                    <Buttons.View type="button">View</Buttons.View>
+                  </Link>
                   <Link to={`/stock/edit/${stock.id}`}>
                     <Buttons.Edit type="button">Edit</Buttons.Edit>
                   </Link>

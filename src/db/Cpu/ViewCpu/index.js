@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
 import { loadEntity } from '../../functions';
 
@@ -18,6 +18,9 @@ export default function ViewCpu() {
   // Get ID from URL
   const { id } = useParams();
 
+  // Hook for navigation
+  const navigate = useNavigate();
+
   // GET Cpu from database and load the page
   useEffect(() => {
     const loadCpus = () => {
@@ -35,9 +38,9 @@ export default function ViewCpu() {
           </h1>
         </div>
         <div className="col">
-          <Link to="/cpu">
-            <Buttons.Cancel type="button">Return</Buttons.Cancel>
-          </Link>
+          <Buttons.Cancel type="button" onClick={() => navigate(-1)}>
+            Return
+          </Buttons.Cancel>
         </div>
       </div>
       <Tables.View>
