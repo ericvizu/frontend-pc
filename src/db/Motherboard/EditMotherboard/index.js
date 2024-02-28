@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Buttons, Edit } from '../../../styles/GlobalStyles';
 import { loadEntity, updateEntity } from '../../functions';
 

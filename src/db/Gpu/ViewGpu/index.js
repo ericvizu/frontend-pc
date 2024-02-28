@@ -1,29 +1,33 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Tables, Buttons, Container } from '../../../styles/GlobalStyles';
 import { loadEntity } from '../../functions';
 
-export default function ViewRam() {
-  // Empty values so that loadRams function has time to update "ram.stock.quantity"
-  const [ram, setRams] = useState({
+export default function ViewGpu() {
+  // Empty values so that loadGpus function has time to update "gpu.stock.quantity"
+  const [gpu, setGpus] = useState({
     brand: '',
     name: '',
-    gen: '',
-    size: '',
-    freq: '',
-    latency: '',
+    baseClock: '',
+    boostClock: '',
+    vramSize: '',
+    vramGen: '',
+    tdp: '',
     stock: '',
   });
 
   // Get ID from URL
   const { id } = useParams();
 
-  // GET Ram from database and load the page
+  // Hook for navigation
+  const navigate = useNavigate();
+
+  // GET Gpu from database and load the page
   useEffect(() => {
-    const loadRams = () => {
-      loadEntity('ram', id).then((m) => setRams(m));
+    const loadGpus = () => {
+      loadEntity('gpu', id).then((m) => setGpus(m));
     };
-    loadRams();
+    loadGpus();
   }, [id]);
 
   return (
@@ -31,40 +35,44 @@ export default function ViewRam() {
       <div className="row">
         <div className="col-md-auto">
           <h1>
-            {ram.brand} {ram.name} (id: {ram.id}) (stock: {ram.stock.quantity})
+            {gpu.brand} {gpu.name} (id: {gpu.id}) (stock: {gpu.stock.quantity})
           </h1>
         </div>
         <div className="col">
-          <Link to="/ram">
-            <Buttons.Cancel type="button">Return</Buttons.Cancel>
-          </Link>
+          <Buttons.Cancel type="button" onClick={() => navigate(-1)}>
+            Return
+          </Buttons.Cancel>
         </div>
       </div>
       <Tables.View>
         <tbody>
           <tr>
             <th>Brand:</th>
-            <th>{ram.brand}</th>
+            <th>{gpu.brand}</th>
           </tr>
           <tr>
             <th>Name:</th>
-            <th>{ram.name}</th>
+            <th>{gpu.name}</th>
           </tr>
           <tr>
-            <th>Generation:</th>
-            <th>{ram.gen}</th>
+            <th>Base Clock:</th>
+            <th>{gpu.baseClock} MHz</th>
           </tr>
           <tr>
-            <th>Size:</th>
-            <th>{ram.size} gb</th>
+            <th>Boost Clock:</th>
+            <th>{gpu.boostClock} MHz</th>
           </tr>
           <tr>
-            <th>Frequency:</th>
-            <th>{ram.freq} MHz</th>
+            <th>VRAM Size:</th>
+            <th>{gpu.vramSize} gb</th>
           </tr>
           <tr>
-            <th>Latency:</th>
-            <th>{ram.latency}</th>
+            <th>VRAM Generation:</th>
+            <th>{gpu.vramGen}</th>
+          </tr>
+          <tr>
+            <th>TDP:</th>
+            <th>{gpu.tdp} W</th>
           </tr>
         </tbody>
       </Tables.View>
