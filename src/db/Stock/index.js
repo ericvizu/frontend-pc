@@ -118,9 +118,9 @@ export default function Stock() {
                   <Link to={`/${stock.category}/view/${stock.id}`}>
                     <Buttons.View type="button">View</Buttons.View>
                   </Link>
-                  <Link to={`/stock/edit/${stock.id}`}>
+                  {/* <Link to={`/stock/edit/${stock.id}`}>
                     <Buttons.Edit type="button">Edit</Buttons.Edit>
-                  </Link>
+                  </Link> */}
                 </td>
               </tr>
             ))}

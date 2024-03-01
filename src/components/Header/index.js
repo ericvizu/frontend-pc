@@ -6,25 +6,25 @@ export default function Header() {
   return (
     <Nav>
       <Link to="/">
-        <FaHome size={30} />
+        <FaHome size={40} />
       </Link>
       <Link to="/motherboard">
-        <FaLaptop size={30} />
+        <FaLaptop size={40} />
       </Link>
       <Link to="/cpu">
-        <FaLaptop size={30} />
+        <FaLaptop size={40} />
       </Link>
       <Link to="/ram">
-        <FaLaptop size={30} />
+        <FaLaptop size={40} />
       </Link>
       <Link to="/gpu">
-        <FaLaptop size={30} />
+        <FaLaptop size={40} />
       </Link>
       <Link to="/stock">
-        <FaStore size={30} />
+        <FaStore size={40} />
       </Link>
       <Link to="/login">
-        <FaUser size={28} />
+        <FaUser size={36} />
       </Link>
     </Nav>
   );
