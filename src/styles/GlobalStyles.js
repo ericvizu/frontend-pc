@@ -27,6 +27,9 @@ export default createGlobalStyle`
   text-align: center;
   padding-top: 50px;
   }
+  p.githubSub {
+  text-align: center;
+  }
 `;
 
 export const Container = styled.section`
